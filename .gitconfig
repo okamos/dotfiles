@@ -1,0 +1,13 @@
+[user]
+	email = himinato.k@gmail.com
+	name = himinato
+[merge]
+	tool = vimdiff
+[core]
+	editor = vim
+[gui]
+	encoding = utf-8
+[color]
+	ui = auto
+[init]
+	templatedir = ~/.git_template

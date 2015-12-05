@@ -1,0 +1,81 @@
+snippet     if
+abbr        If ... End If
+    If ${1:#:condition} Then
+        ${2:TARGET}
+    End If
+
+snippet     case
+abbr        Select Case ... Case ... End Case
+alias       select
+options     head
+    Select Case ${1:#:variable}
+        Case ${2}
+            ${3:TARGET}
+        Case Else
+            ${0:TARGET}
+    End Select
+
+snippet     for
+abbr        For ... To ... Next
+options     head
+    For ${1:#:variable} = ${2:#:init_value} To ${3:#:max_value}
+        ${4:TARGET}
+    Next
+
+snippet     do
+abbr        Do While ... Loop
+alias       while
+options     head
+    Do While ${1:#:condition}
+        ${2:TARGET}
+    Loop
+
+snippet     createdynaset
+abbr        Set rs = OraDatabase.CreateDynaset()
+alias       dynaset
+    Set ${1:#:record_set} = OraDatabase.CreateDynaset(${2:sql}, ${3:ORADYN_READONLY})
+
+snippet     type
+abbr        Type ... End Type
+options     head
+    Private Type  ${1:#:type_name}
+        ${2:TARGET}
+    End Type
+
+snippet     error
+abbr        On Error GoTo
+options     head
+    On Error GoTo ${1:#:label}
+
+snippet     fso
+abbr        Set fso ... Set ts ... ts.WriteLine
+options     head
+    Set ${1:fso} = New FileSystemObject
+    Set ${2:ts} = fso.CreateTextFile(${3:#:file_name}, ${4:ForReading})
+    ${0:TARGET}
+    ts.WriteLine (${5:#:buffer})
+
+snippet     gotfocus
+abbr        Private Sub ... GotFocus
+options     head
+    Private Sub ${1:#:control}_GotFocus()
+        Call SUB_SET_SEL_TEXT($1)
+    End Sub
+
+snippet     change
+abbr        Private Sub ... Change
+options     head
+    Private Sub ${1:#:control}_Change()
+        If Len($1.Text) >= ${2:control_length_max} Then
+            Call SUB_SendKeyEvent(vbKeyTab)
+        End If
+    End Sub
+
+snippet     keypress
+abbr        Private Sub ... KeyPress
+options     head
+    Private Sub ${1:#:control}_KeyPress(KeyAscii As Integer)
+        If SUB_KEY_NUM_CHK(KeyAscii, 0) = False Then KeyAscii = 0
+    End Sub
+
+# vim:set et ts=4 sts=4 sw=4 tw=0:

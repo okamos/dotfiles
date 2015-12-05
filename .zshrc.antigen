@@ -1,0 +1,10 @@
+#!/bin/zsh
+source ~/antigen/antigen.zsh
+
+antigen-bundle zsh-users/zsh-syntax-highlighting
+antigen-bundle zsh-users/zsh-completions
+antigen-bundle yonchu/zsh-vcs-prompt
+ZSH_VCS_PROMPT_ENABLE_CACHING='true'
+RPROMPT='$(vcs_super_info)'${RPROMPT}
+
+antigen-apply

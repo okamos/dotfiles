@@ -1,0 +1,43 @@
+snippet     procedure
+abbr        PROCEDURE ... ();
+options     head
+    PROCEDURE ${1:#:procedure_name}(
+        ${2:TARGET}
+    );
+
+snippet     for
+abbr        FOR ... IN ... LOOP ... END LOOP;
+options     head
+    FOR ${1:#:record} IN ${2:#:cursor} LOOP
+        ${0:TARGET}
+    END LOOP;
+
+snippet     if
+abbr        IF ... THEN ... END IF;
+    IF ${1:#:condition} THEN
+        ${2:TARGET}
+    END IF;
+
+snippet     else
+abbr        ELSE
+    ELSE
+        ${1:TARGET}
+
+snippet     case
+abbr        CASE ... WHEN ... THEN ... END CASE;
+options     head
+    CASE ${1:#:variable}
+    WHEN ${2:vars} THEN
+        ${3:TARGET}
+    ELSE
+        ${4:TARGET}
+    END CASE;
+
+snippet     exception
+abbr        EXCEPTION ... WHEN ... THEN ... END;
+options     indent
+    EXCEPTION
+    WHEN OTHERS THEN
+        ${1:TARGET}
+
+# vim:set et ts=4 sts=4 sw=4 tw=0:

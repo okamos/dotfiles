@@ -1,0 +1,9 @@
+*.swp
+*~
+.DS_Store
+
+.vim/*
+
+# whitelist
+!.vim/ftdetect
+!.vim/snippets
