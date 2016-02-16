@@ -1,2 +1,3 @@
-vendor/
-log/
+vendor
+log
+tmp

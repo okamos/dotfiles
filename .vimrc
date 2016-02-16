@@ -77,8 +77,6 @@ NeoBundle 'rcmdnk/vim-markdown'
 NeoBundle 'othree/html5.vim'
 NeoBundle 'tomtom/tcomment_vim'
 NeoBundle 'tyru/open-browser.vim'
-NeoBundleLazy 'vim-ruby/vim-ruby', {
-  \ 'autoload' : {'filetypes' : ['ruby', 'eruby']}}
 NeoBundle 'scrooloose/syntastic'
 NeoBundle 'itchyny/lightline.vim'
 NeoBundle 'jiangmiao/auto-pairs'
