@@ -99,4 +99,6 @@ if type go > /dev/null 2>&1; then
 fi
 [ -f ~/.zplug/zplug ] && source ~/.zshrc.zplug
 
+autoload -Uz add-zsh-hock
+autoload -Uz chpwd_recent_dirs cdr add-zsh-hook
 autoload -Uz zmv

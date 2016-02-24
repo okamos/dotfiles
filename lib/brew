@@ -16,6 +16,7 @@ run_brew() {
     brew tap 'homebrew/apache'
     brew tap 'homebrew/dupes'
     brew tap 'sanemat/font'
+    brew tap 'peco/peco'
 
     local list_formulae
     local -a missing_formulae
@@ -41,6 +42,7 @@ run_brew() {
       'nkf'
       'nodebrew'
       'openssl'
+      'peco'
       'postgresql'
       'pyenv'
       'pyenv-virtualenv'
