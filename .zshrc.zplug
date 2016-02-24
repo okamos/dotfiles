@@ -1,0 +1,17 @@
+#!/bin/zsh
+source ~/.zplug/zplug
+
+zplug "zsh-users/zsh-syntax-highlighting"
+zplug "zsh-users/zsh-completions"
+zplug "yonchu/zsh-vcs-prompt", of:"zshrc.sh"
+
+if ! zplug check; then
+  zplug install
+fi
+
+zplug load
+
+if zplug check yonchu/zsh-vcs-prompt; then
+  ZSH_VCS_PROMPT_ENABLE_CACHING='true'
+  RPROMPT='$(vcs_super_info)'${RPROMPT}
+fi

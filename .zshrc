@@ -97,6 +97,6 @@ if type go > /dev/null 2>&1; then
   export GOPATH=$HOME/go;
   export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
 fi
-[ -f ~/antigen/antigen.zsh ] && source ~/.zshrc.antigen
+[ -f ~/.zplug/zplug ] && source ~/.zshrc.zplug
 
 autoload -Uz zmv
