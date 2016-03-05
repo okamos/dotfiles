@@ -79,6 +79,9 @@ link_files() {
     [[ ${f} = ".gitignore" ]] && continue
     ln -snfv ${DOT_DIRECTORY}/${f} ${HOME}/${f}
   done
+  [ ! -d ${HOME}/.config/nvim ] && mkdir -p ${HOME}/.config/nvim
+  ln -snfv ${HOME}/.vim ${HOME}/.config/nvim/
+  ln -snfv ${HOME}/.vimrc ${HOME}/.config/nvim/init.vim
   echo $(tput setaf 2)Deploy dotfiles complete!. ✔︎$(tput sgr0)
 }
 

@@ -97,7 +97,12 @@ if type go > /dev/null 2>&1; then
   export GOPATH=$HOME/go;
   export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
 fi
+if type nvim > /dev/null 2>&1; then
+  export TERM=xterm-256color
+  export XDG_CONFIG_HOME=$HOME/.config
+fi
 [ -f ~/.zplug/zplug ] && source ~/.zshrc.zplug
+
 
 autoload -Uz add-zsh-hock
 autoload -Uz chpwd_recent_dirs cdr add-zsh-hook
