@@ -3,7 +3,10 @@
 --exclude=node_modules
 --exclude=*.min.js
 --exclude=jquery*.js
---exclude=vendor
+--exclude=vendor/bundle
+--exclude=bower_components
+--exclude=out
+--exclude=dist
 
 --tag-relative=yes
 --recurse=yes
