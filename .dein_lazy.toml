@@ -1,0 +1,28 @@
+[[plugins]]
+repo = 'Shougo/neomru.vim'
+on_path = '.*'
+
+[[plugins]]
+repo = 'jiangmiao/auto-pairs'
+on_i = 1
+
+[[plugins]]
+repo = 'Shougo/neoyank.vim'
+on_path = '.*'
+on_i = 1
+
+[[plugins]]
+repo = 'Shougo/neosnippet'
+depends = ['neosnippet-snippets']
+on_i = 1
+on_ft = ['snippet']
+
+[[plugins]]
+repo = 'Shougo/neocomplete'
+disabled = '!has("lua")'
+depends = ['vimproc']
+on_i = 1
+
+[[plugins]]
+repo = 'Shougo/unite.vim'
+depends = 'neomru.vim'

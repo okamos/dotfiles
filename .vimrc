@@ -1,99 +1,49 @@
-if !isdirectory(expand("~/.vim"))
-  call mkdir(expand("~/.vim"))
-endif
-" neobundle settings {{{
-if has('vim_starting')
+" dein settings {{{
+if &compatible
   set nocompatible
-  if !isdirectory(expand("~/.vim/.bundle/neobundle.vim/"))
-    echo "install neobundle..."
-    :call system("git clone git://github.com/Shougo/neobundle.vim ~/.vim/.bundle/neobundle.vim")
-  endif
-  set runtimepath+=~/.vim/.bundle/neobundle.vim/
 endif
-call neobundle#begin(expand('~/.vim/.bundle'))
-let g:neobundle_default_git_protocol='https'
-NeoBundleFetch 'Shougo/neobundle.vim'
-if has('lua')
-  NeoBundleLazy 'Shougo/neocomplete.vim', {
-    \ 'depends' : 'Shougo/vimproc',
-    \ 'autoload' : { 'insert' : 1,}
-    \ }
-endif
-NeoBundle 'Shougo/neomru.vim', {
-  \ 'depends' : 'Shougo/unite.vim'
-  \ }
-NeoBundleLazy 'Shougo/neosnippet', {
-  \ 'depends' : 'Shougo/neosnippet-snippets',
-  \ 'autoload' : {
-  \   'insert' : 1,
-  \   'filetypes' : 'snippet',
-  \ }}
-NeoBundle 'Shougo/neosnippet-snippets'
-NeoBundle 'Shougo/unite.vim'
-NeoBundleLazy 'Shougo/vimfiler', {
-  \ 'depends' : ["Shougo/unite.vim"],
-  \ 'autoload' : {
-  \   'commands' : [ "VimFilerTab", "VimFiler", "VimFilerExplorer", "VimFilerBufferDir" ],
-  \   'mappings' : ['<Plug>(vimfiler_switch)'],
-  \   'explorer' : 1,
-  \ }}
-NeoBundle 'Shougo/vimproc', {
-  \ 'build' : {
-  \     'windows' : 'make -f make_mingw32.mak',
-  \     'cygwin' : 'make -f make_cygwin.mak',
-  \     'mac' : 'make -f make_mac.mak',
-  \     'unix' : 'make -f make_unix.mak',
-  \    },
-  \ }
-NeoBundleLazy 'tpope/vim-endwise', {
-  \ 'autoload' : { 'insert' : 1,}}
-NeoBundle 'tpope/vim-fugitive', {
-  \ 'augroup' : 'fugitive'}
-NeoBundle 'tpope/vim-surround'
-NeoBundle 'vim-scripts/matchit.zip'
-if has('mac') || has('win32unix')
-  NeoBundle 'glidenote/memolist.vim'
-endif
-NeoBundle 'AndrewRadev/switch.vim'
-NeoBundle 'hail2u/vim-css3-syntax'
-NeoBundle 'wavded/vim-stylus'
-NeoBundleLazy 'junegunn/vim-easy-align', {
-  \ 'autoload': {
-  \   'commands' : ['EasyAlign'],
-  \   'mappings' : ['<Plug>(EasyAlign)'],
-  \ }}
-NeoBundle 'kannokanno/previm'
-NeoBundle 'kchmck/vim-coffee-script'
-NeoBundle 'LeafCage/yankround.vim'
-NeoBundle 'Lokaltog/vim-easymotion'
-NeoBundleLazy 'mattn/emmet-vim', {
-  \ 'autoload' : {
-  \   'filetypes' : ['html', 'html5', 'eruby', 'jsp', 'xml', 'css', 'scss', 'coffee'],
-  \   'commands' : ['<Plug>ZenCodingExpandNormal']
-  \ }}
-NeoBundle 'junegunn/seoul256.vim'
-NeoBundle 'pangloss/vim-javascript'
-NeoBundle 'rcmdnk/vim-markdown'
-NeoBundle 'othree/html5.vim'
-NeoBundle 'tomtom/tcomment_vim'
-NeoBundle 'tyru/open-browser.vim'
-NeoBundle 'scrooloose/syntastic'
-NeoBundle 'itchyny/lightline.vim'
-NeoBundle 'jiangmiao/auto-pairs'
+let s:dein_dir = expand('~/.cache/dein')
+let s:dein_repo_dir = s:dein_dir . '/repos/github.com/Shougo/dein.vim'
 
-NeoBundleCheck
-call neobundle#end()
-filetype plugin indent on
+if !isdirectory(s:dein_repo_dir)
+  execute '!git clone https://github.com/Shougo/dein.vim' s:dein_repo_dir
+endif
+execute 'set runtimepath^=' . s:dein_repo_dir
+
+call dein#begin(s:dein_dir)
+
+let s:toml = '~/.dein.toml'
+let s:lazy_toml = '~/.dein_lazy.toml'
+
+if dein#load_cache([expand('<sfile>', s:toml, s:lazy_toml)])
+  call dein#load_toml(s:toml, {'lazy': 0})
+  call dein#load_toml(s:lazy_toml, {'lazy': 1})
+  call dein#save_cache()
+endif
+
+call dein#end()
+
+" at first
+if dein#check_install(['vimproc'])
+  call dein#install(['vimproc'])
+endif
+" at second
+if dein#check_install()
+  call dein#install()
+endif
 " }}}
+
+
+" filetype plugin indent on
+
 " plugin data directories {{{
-let g:vimfiler_data_directory       = expand('~/.vim/etc/vimfiler')
 let g:neosnippet#data_directory     = expand('~/.vim/etc/.cache/neosnippet')
 let g:neosnippet#snippets_directory = [expand('~/.vim/.bundle/neosnippet-snippets/neosnippets'),expand('~/dotfiles/snippets')]
 let g:unite_data_directory          = expand('~/.vim/etc/unite')
 let g:neomru#file_mru_path          = expand('~/.vim/etc/neomru/file')
 let g:neomru#directory_mru_path     = expand('~/.vim/etc/neomru/direcroty')
+let g:neoyank#file                  = expand('~/.vim/etc/.cache/neoyank')
 let g:w3m#history#save_file         = expand('~/.vim/etc/.vim_w3m_hist')
-let g:yankround_dir                 = expand('~/.vim/etc/.cache/yankround')
 let g:memolist_path                 = expand('~/GoogleDrive/memolist')
 " }}}
 " neocomplete {{{
@@ -119,13 +69,11 @@ let g:unite_enable_smart_case = 1
 " grep
 nnoremap <silent> ,g  :<C-u>Unite grep:. -buffer-name=search-buffer<CR>
 nnoremap <silent> ,cg :<C-u>Unite grep:. -buffer-name=search-buffer<CR><C-R><C-W>
-" grep検索結果の再呼出
+" recall grep result
 nnoremap <silent> ,r  :<C-u>UniteResume search-buffer<CR>
-nmap <silent> <C-u><C-b> :<C-u>Unite buffer<CR>
 nmap <silent> <C-u><C-f> :<C-u>UniteWithBufferDir -buffer-name=files file<CR>
 nmap <silent> <C-u><C-r> :<C-u>Unite -buffer-name=register register<CR>
-nmap <silent> <C-u><C-m> :<C-u>Unite file_mru<CR>
-nmap <silent> <C-u><C-u> :<C-u>Unite buffer file_mru<CR>
+nmap <silent> <C-u><C-u> :<C-u>Unite file_mru buffer<CR>
 nmap <silent> <C-u><C-a> :<C-u>UniteWithBufferDir -buffer-name=files buffer file_mru bookmark file<CR>
 if executable('pt')
   let g:unite_source_grep_command = 'pt'
@@ -137,11 +85,6 @@ au FileType unite nmap <silent> <buffer> <expr> <C-j> unite#do_action('split')
 au FileType unite imap <silent> <buffer> <expr> <C-j> unite#do_action('split')
 au FileType unite nmap <silent> <buffer> <expr> <C-l> unite#do_action('vsplit')
 au FileType unite imap <silent> <buffer> <expr> <C-l> unite#do_action('vsplit')
-" }}}
-" vimfiler {{{
-let g:vimfiler_as_default_explorer  = 1
-let g:vimfiler_safe_mode_by_default = 0
-nnoremap <silent><C-u><C-j> :<C-u>VimFilerBufferDir -split -simple -winwidth=35 -no-quit -toggle<CR>
 " }}}
 " memolist {{{
 let g:memolist_gfixgrep = 1
@@ -167,12 +110,9 @@ let g:user_emmet_settings = {
 vmap <Enter> <Plug>(EasyAlign)
 nmap <Leader>a <Plug>(EasyAlign)
 " }}}
-" yankround.vim {{{
-nmap p <Plug>(yankround-p)
-nmap P <Plug>(yankround-P)
-nmap <C-p> <Plug>(yankround-prev)
-nmap <C-n> <Plug>(yankround-next)
-let g:yankround_max_history = 100
+" neoyank.vim {{{
+nmap <silent> <C-u><C-y> :<C-u>:Unite history/yank<CR>
+let g:neoyank#limit = 1000
 nnoremap <Leader><C-p> :<C-u>Unite yankround<CR>
 "}}}
 " vim-easymotion {{{
