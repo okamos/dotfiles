@@ -232,7 +232,11 @@ set fileencodings=utf-8,iso-2022-jp,euc-jp,sjis,cp932
 set fileformats=unix,dos,mac
 " }}}
 " appearance {{{
-set t_Co=256
+if has('nvim')
+  let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+else
+  set t_Co=256
+endif
 syntax on
 let g:seoul256_background = 233
 try
