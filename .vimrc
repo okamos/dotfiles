@@ -13,28 +13,18 @@ if !isdirectory(s:dein_repo_dir)
 endif
 execute 'set runtimepath^=' . s:dein_repo_dir
 
-call dein#begin(s:dein_dir)
+if dein#load_state(s:dein_dir)
+  call dein#begin(s:dein_dir)
 
-let s:toml = '~/.dein.toml'
-let s:lazy_toml = '~/.dein_lazy.toml'
+  let s:toml = '~/.dein.toml'
+  let s:lazy_toml = '~/.dein_lazy.toml'
 
-if dein#load_cache([expand('<sfile>', s:toml, s:lazy_toml)])
   call dein#load_toml(s:toml, {'lazy': 0})
   call dein#load_toml(s:lazy_toml, {'lazy': 1})
-  call dein#save_cache()
+
+  call dein#end()
+  call dein#save_state()
 endif
-
-if dein#tap('unite.vim')
-  function! s:unite_ignore() abort
-    let s:ignore_globs = ['**/node_modules/**', '**/vendor/bundle/**', '**/bower_components/**', '**/tmp/cache/**']
-    call unite#custom#source('file_rec,file_rec/async', 'ignore_globs', s:ignore_globs)
-  endfunction
-
-  execute 'autocmd rc_autocmd User' 'dein#source#' . g:dein#name 'call s:unite_ignore()'
-endif
-
-
-call dein#end()
 
 " at first
 if dein#check_install(['vimproc'])
@@ -47,7 +37,7 @@ endif
 " }}}
 
 
-" filetype plugin indent on
+filetype plugin indent on
 
 " plugin data directories {{{
 let g:neosnippet#data_directory     = expand('~/.vim/etc/.cache/neosnippet')
