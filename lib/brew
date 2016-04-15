@@ -40,7 +40,7 @@ run_brew() {
       'lua'
       'mysql'
       'nkf'
-      'nvim/nvim/nvim'
+      'neovim/neovim/neovim'
       'nodebrew'
       'openssl'
       'peco'
