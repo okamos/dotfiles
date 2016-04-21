@@ -31,6 +31,24 @@ on_i = 1
 repo = 'Shougo/unite.vim'
 depends = 'neomru.vim'
 hook_post_source = '''
-  let ignore_globs = ['**/node_modules/**', '**/vendor/bundle/**', '**/bower_components/**', '**/tmp/cache/**']
-  call unite#custom#source('file_rec,file_rec/async', 'ignore_globs', ignore_globs)"
+let ignore_globs = ['**/node_modules/**', '**/vendor/bundle/**', '**/bower_components/**', '**/tmp/cache/**']
+call unite#custom#source('file_rec,file_rec/async', 'ignore_globs', ignore_globs)"
+'''
+
+[[plugins]]
+repo = 'mattn/emmet-vim'
+on_ft = ['eruby', 'html']
+hook_add = '''
+let g:user_emmet_settings = {
+  \   'indentation': '  '
+  \ }
+'''
+
+[[plugins]]
+repo = 'junegunn/vim-easy-align'
+on_cmd = ['EasyAlign']
+on_map = ['<Plug>(EasyAlign)']
+hook_add = '''
+vmap <Enter> <Plug>(EasyAlign)
+nmap <Leader>a <Plug>(EasyAlign)
 '''
