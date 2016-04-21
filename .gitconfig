@@ -9,5 +9,12 @@
 	encoding = utf-8
 [color]
 	ui = auto
+  status = auto
+  diff = auto
+  branch = auto
+  interactive = auto
+  grep = auto
 [init]
 	templatedir = ~/.git_template
+[alias]
+  graph = log --graph --date=short --decorate=short --pretty=format:'%Cgreen%h %Creset%cd %Cblue%cn %Cred%d %Creset%s'
