@@ -262,4 +262,7 @@ imap <C-j> <esc>
 nmap <Esc><Esc> :nohlsearch<CR><Esc>
 nmap <Tab> %
 vmap <Tab> %
+if has('nvim')
+  tnoremap <Esc> <C-\><C-n>
+endif
 " }}}
