@@ -2,8 +2,7 @@
 *~
 .DS_Store
 
-.vim/*
+.config/*
 
 # whitelist
-!.vim/ftdetect
-!.vim/snippets
+!.config/nvim

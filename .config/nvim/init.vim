@@ -40,13 +40,12 @@ endif
 filetype plugin indent on
 
 " plugin data directories {{{
-let g:neosnippet#data_directory     = expand('~/.vim/etc/.cache/neosnippet')
-let g:neosnippet#snippets_directory = [expand('~/.vim/.bundle/neosnippet-snippets/neosnippets'),expand('~/dotfiles/snippets')]
-let g:unite_data_directory          = expand('~/.vim/etc/unite')
-let g:neomru#file_mru_path          = expand('~/.vim/etc/neomru/file')
-let g:neomru#directory_mru_path     = expand('~/.vim/etc/neomru/direcroty')
-let g:neoyank#file                  = expand('~/.vim/etc/.cache/neoyank')
-let g:w3m#history#save_file         = expand('~/.vim/etc/.vim_w3m_hist')
+let g:neosnippet#data_directory     = expand('~/.cache/etc/.cache/neosnippet')
+let g:neosnippet#snippets_directory = [s:dein_dir.'/repos/github.com/Shougo/neosnippet-snippets/neosnippets', expand('~/dotfiles/snippets')]
+let g:unite_data_directory          = expand('~/.cache/etc/unite')
+let g:neomru#file_mru_path          = expand('~/.cache/etc/neomru/file')
+let g:neomru#directory_mru_path     = expand('~/.cache/etc/neomru/direcroty')
+let g:neoyank#file                  = expand('~/.cache/etc/.cache/neoyank')
 let g:memolist_path                 = expand('~/GoogleDrive/memolist')
 " }}}
 " neocomplete {{{

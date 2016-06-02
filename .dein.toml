@@ -34,9 +34,6 @@ repo = 'wavded/vim-stylus'
 repo = 'kannokanno/previm'
 
 [[plugins]]
-repo = 'LeafCage/yankround.vim'
-
-[[plugins]]
 repo = 'Lokaltog/vim-easymotion'
 
 [[plugins]]

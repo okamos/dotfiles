@@ -48,9 +48,8 @@ case ${OSTYPE} in
 esac
 
 # If missing, download and extract the dotfiles repository
-if [ -n "${OVERWRITE}" -o ! -d ${DOT_DIRECTORY} ]; then
+if [ ! -d ${DOT_DIRECTORY} ]; then
   echo "Downloading dotfiles..."
-  rm -rf ${DOT_DIRECTORY}
   mkdir ${DOT_DIRECTORY}
 
   if has "git"; then
@@ -68,20 +67,18 @@ cd ${DOT_DIRECTORY}
 source ./lib/brew
 
 link_files() {
-  # Force remove the vim directory if it's already there
-  [ -n "${OVERWRITE}" -a -d ${HOME}/.vim ] && rm -rf ${HOME}/.vim
-  cd ${DOT_DIRECTORY}
-
   for f in .??*
   do
-    # If you have ignore files, add file/directory name here
-    [[ ${f} = ".git" ]] && continue
-    [[ ${f} = ".gitignore" ]] && continue
-    ln -snfv ${DOT_DIRECTORY}/${f} ${HOME}/${f}
+    # Force remove the vim directory if it's already there
+    [ -n "${OVERWRITE}" -a -e ${HOME}/${f} ] && rm -f ${HOME}/${f}
+    if [ ! -e ${HOME}/${f} ]; then
+      # If you have ignore files, add file/directory name here
+      [[ ${f} = ".git" ]] && continue
+      [[ ${f} = ".gitignore" ]] && continue
+      ln -snfv ${DOT_DIRECTORY}/${f} ${HOME}/${f}
+    fi
   done
-  [ ! -d ${HOME}/.config/nvim ] && mkdir -p ${HOME}/.config/nvim
-  ln -snfv ${HOME}/.vim/ ${HOME}/.config/nvim/
-  ln -snfv ${HOME}/.vimrc ${HOME}/.config/nvim/init.vim
+
   echo $(tput setaf 2)Deploy dotfiles complete!. ✔︎$(tput sgr0)
 }
 
@@ -103,7 +100,7 @@ initialize() {
   if has "rbenv"; then
     # Install latest ruby
     latest=`rbenv install --list | grep -v - | tail -n 1`
-    current=`rbenv versions | tail -n 1 | cut -d' ' -f 2`
+    current=`rbenv versions | tail -n 1 | grep -oe '\d\.\d\.\d'`
     if [ ${current} != ${latest} ]; then
       rbenv install ${latest}
       rbenv global ${latest}
