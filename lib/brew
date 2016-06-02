@@ -25,6 +25,7 @@ run_brew() {
       'automake'
       'awscli'
       'android-sdk'
+      'asciinema'
       'brew-cask'
       'coreutils'
       'ctags'

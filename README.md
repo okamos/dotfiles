@@ -1,7 +1,7 @@
 # Dotfiles
 OS X dotfiles.
 
-![screen](https://s3-ap-northeast-1.amazonaws.com/okamos/dotfiles/screen.jpg)
+[![asciicast](https://asciinema.org/a/47577.png)](https://asciinema.org/a/47577)
 
 ##  How to install
 The installation step requires the [XCode Command Line Tools](https://developer.apple.com/downloads)
