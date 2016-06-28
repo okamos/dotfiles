@@ -55,9 +55,6 @@ repo = 'tomtom/tcomment_vim'
 repo = 'tyru/open-browser.vim'
 
 [[plugins]]
-repo = 'scrooloose/syntastic'
-
-[[plugins]]
 repo = 'itchyny/lightline.vim'
 
 [[plugins]]

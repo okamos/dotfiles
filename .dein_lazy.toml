@@ -52,3 +52,13 @@ hook_add = '''
 vmap <Enter> <Plug>(EasyAlign)
 nmap <Leader>a <Plug>(EasyAlign)
 '''
+
+[[plugins]]
+repo = 'neomake/neomake'
+hook_add = '''
+autocmd! BufWritePost * Neomake
+'''
+hook_source = '''
+let g:neomake_javascript_enabled_makers = ['eslint']
+let g:neomake_ruby_enabled_makers = ['rubocop']
+'''

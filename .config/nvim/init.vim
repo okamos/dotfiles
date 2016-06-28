@@ -136,15 +136,6 @@ let g:vim_markdown_folding_disabled = 1
 let g:netrw_nogx = 1 " disable netrw's gx mapping.
 nmap gx <Plug>(openbrowser-smart-search)
 " }}}
-" syntastic {{{
-let g:syntastic_mode_map = {
-  \ 'mode': 'passive',
-  \ 'active_filetypes': ['ruby', 'eruby', 'javascript', 'coffee']
-  \ }
-let g:syntastic_ruby_checkers = ['rubocop']
-let g:syntastic_coffee_checkers = ['coffeelint']
-let g:syntastic_javascript_checkers = ['eslint']
-" }}}
 " lightline {{{
 let g:lightline = {
   \ 'colorscheme': 'jellybeans',
