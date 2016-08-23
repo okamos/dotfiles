@@ -88,6 +88,7 @@ endif
 let g:memolist_gfixgrep = 1
 let g:memolist_unite = 1
 let g:memolist_unite_option = "-vertical -start-insert"
+let g:memolist_filename_prefix_none = 1
 nnoremap mn  :MemoNew<CR>
 nnoremap ml  :MemoList<CR>
 nnoremap mg  :MemoGrep<CR>
@@ -206,11 +207,7 @@ set fileencodings=utf-8,iso-2022-jp,euc-jp,sjis,cp932
 set fileformats=unix,dos,mac
 " }}}
 " appearance {{{
-if has('nvim')
-  let $NVIM_TUI_ENABLE_TRUE_COLOR=1
-else
-  set t_Co=256
-endif
+set termguicolors
 syntax on
 let g:seoul256_background = 233
 try
