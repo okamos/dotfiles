@@ -100,10 +100,21 @@ initialize() {
   if has "rbenv"; then
     # Install latest ruby
     latest=`rbenv install --list | grep -v - | tail -n 1`
-    current=`rbenv versions | tail -n 1 | grep -oe '\d\.\d\.\d'`
+    current=`rbenv versions | grep -oe '\d\.\d\.\d' | tail -n 1`
     if [ ${current} != ${latest} ]; then
       rbenv install ${latest}
       rbenv global ${latest}
+    fi
+  fi
+  if has "pyenv"; then
+    latest=`pyenv install --list | grep -v - | grep -oe '\d\.\d\.\d$' | tail -n 1`
+    current=`pyenv versions | grep -oe '\d\.\d\.\d$' | tail -n 1`
+    if [ ${current} != ${latest} ]; then
+      pyenv install ${latest}
+      pyenv global ${latest}
+      pyenv virtualenv -f `pyenv versions | grep -oe "\d\.\d\.\d" | tail -n 1` neovim3
+      pyenv activate neovim3
+      pip install neovim
     fi
   fi
 

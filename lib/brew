@@ -26,7 +26,6 @@ run_brew() {
       'awscli'
       'android-sdk'
       'asciinema'
-      'brew-cask'
       'coreutils'
       'ctags'
       'docker'
@@ -41,7 +40,7 @@ run_brew() {
       'lua'
       'mysql'
       'nkf'
-      'neovim/neovim/neovim'
+      'neovim'
       'nodebrew'
       'openssl'
       'peco'
@@ -85,8 +84,7 @@ run_brew() {
     fi
 
     ln -sfv /usr/local/opt/mysql/*.plist ~/Library/LaunchAgents
-    launchctl unload ~/Library/LaunchAgents/homebrew.mxcl.postgresql.plist
-    launchctl load ~/Library/LaunchAgents/homebrew.mxcl.postgresql.plist
+    ln -sfv /usr/local/opt/postgresql/*.plist ~/Library/LaunchAgents
     if [ -z "${installed_ricty}"  ]; then
       echo "Reload fonts. This could take a while..."
       local cellar=`brew --config | grep 'HOMEBREW_CELLAR' | cut -d' ' -f 2`
@@ -97,7 +95,6 @@ run_brew() {
     local -a missing_formulae=()
     local -a desired_formulae=(
       'alfred'
-      'clipmenu'
       'dash'
       'dashlane'
       'dropbox'
