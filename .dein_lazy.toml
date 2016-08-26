@@ -30,10 +30,6 @@ on_i = 1
 [[plugins]]
 repo = 'Shougo/unite.vim'
 depends = 'neomru.vim'
-hook_post_source = '''
-let ignore_globs = ['**/node_modules/**', '**/vendor/bundle/**', '**/bower_components/**', '**/tmp/cache/**']
-call unite#custom#source('file_rec,file_rec/async', 'ignore_globs', ignore_globs)"
-'''
 
 [[plugins]]
 repo = 'mattn/emmet-vim'
