@@ -36,8 +36,8 @@ if dein#check_install()
 endif
 " }}}
 
-
 filetype plugin indent on
+let g:python3_host_prog = expand('~/.pyenv/versions/neovim3/bin/python')
 
 " plugin data directories {{{
 let g:neosnippet#data_directory     = expand('~/.cache/etc/.cache/neosnippet')
@@ -216,6 +216,7 @@ try
 catch
 endtry
 hi EasyMotionTarget guifg=#80a0ff ctermfg=81
+hi CursorLine guifg=#E19972
 set nobackup
 set noswapfile
 set matchpairs& matchpairs+=<:>
