@@ -3,6 +3,7 @@
 .DS_Store
 
 .config/*
+.custom/previm/js/previm-function.js
 
 # whitelist
 !.config/nvim

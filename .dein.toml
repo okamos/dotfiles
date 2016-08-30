@@ -31,7 +31,12 @@ repo = 'hail2u/vim-css3-syntax'
 repo = 'wavded/vim-stylus'
 
 [[plugins]]
-repo = 'kannokanno/previm'
+repo = 'okamos/previm'
+merged = 0
+hook_add = '''
+let g:previm_show_header = 0
+let g:previm_custom_dir = '~/.custom/previm'
+'''
 
 [[plugins]]
 repo = 'Lokaltog/vim-easymotion'
