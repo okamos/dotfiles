@@ -58,3 +58,7 @@ hook_source = '''
 let g:neomake_javascript_enabled_makers = ['eslint']
 let g:neomake_ruby_enabled_makers = ['rubocop']
 '''
+
+[[plugins]]
+repo = 'Shougo/denite.nvim'
+on_cmd = ['Denite']

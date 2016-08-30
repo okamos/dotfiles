@@ -73,8 +73,8 @@ let g:unite_enable_smart_case = 1
 nnoremap <silent> ,r  :<C-u>UniteResume search-buffer<CR>
 nmap <silent> <C-u><C-f> :<C-u>UniteWithBufferDir -buffer-name=files file<CR>
 nmap <silent> <C-u><C-r> :<C-u>Unite -buffer-name=register register<CR>
-nmap <silent> <C-u><C-u> :<C-u>Unite file_mru buffer<CR>
-nmap <silent> <C-u><C-p> :<C-u>Unite file_rec/async:!<CR>
+nmap <silent> <C-u><C-u> :<C-u>Denite file_mru<CR>
+nmap <silent> <C-u><C-p> :<C-u>Denite file_rec<CR>
 " grep
 nnoremap <silent> ,g  :<C-u>Unite grep:. -buffer-name=search-buffer<CR>
 if executable('pt')
@@ -82,7 +82,6 @@ if executable('pt')
   let g:unite_source_grep_default_opts  = '--nogroup --nocolor --smart-case'
   let g:unite_source_grep_recursive_opt = ''
   let g:unite_source_grep_encoding      = 'utf-8'
-  let g:unite_source_rec_async_command  = ['pt', '--hidden', '--nogroup', '--nocolor', '--home-ptignore', '-g', '']
 endif
 " }}}
 " memolist {{{
