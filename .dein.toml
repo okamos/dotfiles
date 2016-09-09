@@ -6,7 +6,12 @@ repo = 'Shougo/vimproc'
 build = 'make'
 
 [[plugins]]
-repo = 'Shougo/neosnippet-snippets'
+repo = 'Shougo/deoplete.nvim'
+hook_add = '''
+let g:deoplete#enable_at_startup = 1
+let g:deoplete#omni_patterns = {}
+let g:deoplete#omni_patterns.ruby = ['[^. *\t]\.\w*','\h\w*::']
+'''
 
 [[plugins]]
 repo = 'tpope/vim-fugitive'
@@ -19,27 +24,26 @@ repo = 'vim-scripts/matchit.zip'
 
 [[plugins]]
 repo = 'glidenote/memolist.vim'
-if = '''has('mac') || has('win32unix')'''
+hook_add = '''
+let g:memolist_gfixgrep             = 1
+let g:memolist_denite               = 1
+let g:memolist_filename_prefix_none = 1
 
-[[plugins]]
-repo = 'AndrewRadev/switch.vim'
-
-[[plugins]]
-repo = 'hail2u/vim-css3-syntax'
+nnoremap mn  :MemoNew<CR>
+nnoremap ml  :MemoList<CR>
+nnoremap mg  :MemoGrep<CR>
+'''
 
 [[plugins]]
 repo = 'wavded/vim-stylus'
 
 [[plugins]]
 repo = 'okamos/previm'
-merged = 0
+rev = 'feature/custom_dir'
 hook_add = '''
 let g:previm_show_header = 0
 let g:previm_custom_dir = '~/.custom/previm'
 '''
-
-[[plugins]]
-repo = 'Lokaltog/vim-easymotion'
 
 [[plugins]]
 repo = 'junegunn/seoul256.vim'
@@ -48,7 +52,7 @@ repo = 'junegunn/seoul256.vim'
 repo = 'pangloss/vim-javascript'
 
 [[plugins]]
-repo = 'rcmdnk/vim-markdown'
+repo = 'tpope/vim-markdown'
 
 [[plugins]]
 repo = 'othree/html5.vim'
@@ -60,12 +64,26 @@ repo = 'tomtom/tcomment_vim'
 repo = 'tyru/open-browser.vim'
 
 [[plugins]]
-repo = 'itchyny/lightline.vim'
-
-[[plugins]]
 repo = 'cespare/vim-toml'
 on_ft = 'toml'
 
 [[plugins]]
 repo = 'elzr/vim-json'
 on_ft = 'json'
+
+[[plugins]]
+repo = 'fatih/vim-go'
+on_ft = 'go'
+hook_add = '''
+au FileType go nmap <leader>r <Plug>(go-run)
+au FileType go nmap <leader>b <Plug>(go-build)
+au FileType go nmap <leader>t <Plug>(go-test)
+au FileType go nmap <leader>c <Plug>(go-coverage)
+
+au FileType go nmap <Leader>ds <Plug>(go-def-split)
+au FileType go nmap <Leader>dv <Plug>(go-def-vertical)
+au FileType go nmap <Leader>dt <Plug>(go-def-tab)
+
+au FileType go nmap <Leader>gd <Plug>(go-doc)
+au FileType go nmap <Leader>gv <Plug>(go-doc-vertical)
+'''

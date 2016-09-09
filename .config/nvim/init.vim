@@ -1,6 +1,3 @@
-augroup rc_autocmd
-  autocmd!
-augroup END
 " dein settings {{{
 if &compatible
   set nocompatible
@@ -26,17 +23,16 @@ if dein#load_state(s:dein_dir)
   call dein#save_state()
 endif
 
-" at first
-if dein#check_install(['vimproc'])
-  call dein#install(['vimproc'])
+if dein#check_install()
+  call dein#install('vimproc')
 endif
-" at second
 if dein#check_install()
   call dein#install()
 endif
 " }}}
 
 filetype plugin indent on
+
 let g:python3_host_prog = expand('~/.pyenv/versions/neovim3/bin/python')
 
 " plugin data directories {{{
@@ -48,157 +44,10 @@ let g:neomru#directory_mru_path     = expand('~/.cache/etc/neomru/direcroty')
 let g:neoyank#file                  = expand('~/.cache/etc/.cache/neoyank')
 let g:memolist_path                 = expand('~/GoogleDrive/memolist')
 " }}}
-" neocomplete {{{
-let g:neocomplete#enable_at_startup               = 1
-let g:neocomplete#auto_completion_start_length    = 5
-let g:neocomplete#enable_ignore_case              = 1
-let g:neocomplete#enable_smart_case               = 1
-let g:neocomplete#enable_camel_case               = 1
-let g:neocomplete#use_vimproc                     = 1
-let g:neocomplete#sources#buffer#cache_limit_size = 1000000
-let g:neocomplete#sources#tags#cache_limit_size   = 30000000
-let g:neocomplete#enable_fuzzy_completion         = 1
-let g:neocomplete#lock_buffer_name_pattern        = '\*ku\*'
-" }}}
-" neosnippet {{{
-imap <C-k> <Plug>(neosnippet_expand_or_jump)
-smap <C-k> <Plug>(neosnippet_expand_or_jump)
-" }}}
-" unite {{{
-let g:unite_enable_start_insert=1
-let g:unite_enable_ignore_case = 1
-let g:unite_enable_smart_case = 1
 
-" recall grep result
-nnoremap <silent> ,r  :<C-u>UniteResume search-buffer<CR>
-nmap <silent> <C-u><C-f> :<C-u>UniteWithBufferDir -buffer-name=files file<CR>
-nmap <silent> <C-u><C-r> :<C-u>Unite -buffer-name=register register<CR>
-nmap <silent> <C-u><C-u> :<C-u>Denite file_mru<CR>
-nmap <silent> <C-u><C-p> :<C-u>Denite file_rec<CR>
-" grep
-nnoremap <silent> ,g  :<C-u>Unite grep:. -buffer-name=search-buffer<CR>
-if executable('pt')
-  let g:unite_source_grep_command = 'pt'
-  let g:unite_source_grep_default_opts  = '--nogroup --nocolor --smart-case'
-  let g:unite_source_grep_recursive_opt = ''
-  let g:unite_source_grep_encoding      = 'utf-8'
-endif
-" }}}
-" memolist {{{
-let g:memolist_gfixgrep = 1
-let g:memolist_unite = 1
-let g:memolist_unite_option = "-vertical -start-insert"
-let g:memolist_filename_prefix_none = 1
-nnoremap mn  :MemoNew<CR>
-nnoremap ml  :MemoList<CR>
-nnoremap mg  :MemoGrep<CR>
-" }}}
-" switch {{{
-nmap + :Switch<CR>
-nmap - :Switch<CR>
-" }}}
-" emmet {{{
-let g:use_emmet_complete_tag = 1
-let g:user_emmet_settings = {
-  \ 'lang' : 'ja',
-  \ 'html' : {
-  \   'indentation' : '  '
-  \ }}
-" }}}
-" vim-easy-align {{{
-vmap <Enter> <Plug>(EasyAlign)
-nmap <Leader>a <Plug>(EasyAlign)
-" }}}
-" neoyank.vim {{{
-nmap <silent> <C-u><C-y> :<C-u>:Unite history/yank<CR>
-let g:neoyank#limit = 1000
-nnoremap <Leader><C-p> :<C-u>Unite yankround<CR>
-"}}}
-" vim-easymotion {{{
-let g:EasyMotion_do_mapping = 0
-nmap s <Plug>(easymotion-s2)
-xmap s <Plug>(easymotion-s2)
-omap z <Plug>(easymotion-s2)
-nmap g/ <Plug>(easymotion-sn)
-xmap g/ <Plug>(easymotion-sn)
-omap g/ <Plug>(easymotion-tn)
-let g:EasyMotion_smartcase = 1
-map <Leader>j <Plug>(easymotion-j)
-map <Leader>k <Plug>(easymotion-k)
-let g:EasyMotion_startofline = 0
-let g:EasyMotion_keys = 'QZASDFGHJKL;'
-let g:EasyMotion_use_upper = 1
-let g:EasyMotion_enter_jump_first = 1
-" }}}
-" vim-markdown {{{
-let g:vim_markdown_folding_disabled = 1
-" }}}
 " open-browser {{{
 let g:netrw_nogx = 1 " disable netrw's gx mapping.
 nmap gx <Plug>(openbrowser-smart-search)
-" }}}
-" lightline {{{
-let g:lightline = {
-  \ 'colorscheme': 'jellybeans',
-  \ 'active': {
-  \   'left': [ [ 'mode', 'paste' ],
-  \             [ 'fugitive', 'filename' ] ]
-  \ },
-  \ 'component': {
-  \   'readonly': '%{&filetype=="help"?"":&readonly?"⭤":""}',
-  \   'modified': '%{&filetype=="help"?"":&modified?"+":&modifiable?"":"-"}',
-  \   'fugitive': '%{exists("*fugitive#head")?fugitive#head():""}'
-  \ },
-  \ 'component_visible_condition': {
-  \   'readonly': '(&filetype!="help"&& &readonly)',
-  \   'modified': '(&filetype!="help"&&(&modified||!&modifiable))',
-  \   'fugitive': '(exists("*fugitive#head") && ""!=fugitive#head())'
-  \ },
-  \ 'component_function': {
-  \   'fugitive': 'MyFugitive',
-  \   'readonly': 'MyReadonly',
-  \   'modified': 'MyModified',
-  \   'filename': 'MyFilename'
-  \ },
-  \ 'separator': { 'left': "\u2b80", 'right': "\u2b82" },
-  \ 'subseparator': { 'left': "\u2b81", 'right': "\u2b83" }
-  \ }
-
-function! MyModified()
-  if &filetype == "help"
-    return ""
-  elseif &modified
-    return "+"
-  elseif &modifiable
-    return ""
-  else
-    return ""
-  endif
-endfunction
-
-function! MyReadonly()
-  if &filetype == "help"
-    return ""
-  elseif &readonly
-    return "⭤"
-  else
-    return ""
-  endif
-endfunction
-
-function! MyFugitive()
-  if exists("*fugitive#head")
-    let _ = fugitive#head()
-    return strlen(_) ? '⭠ '._ : ''
-  endif
-  return ''
-endfunction
-
-function! MyFilename()
-  return ('' != MyReadonly() ? MyReadonly() . ' ' : '') .
-       \ ('' != expand('%:t') ? expand('%:t') : '[No Name]') .
-       \ ('' != MyModified() ? ' ' . MyModified() : '')
-endfunction
 " }}}
 
 " encoding {{{
@@ -214,7 +63,6 @@ try
   colorscheme seoul256
 catch
 endtry
-hi EasyMotionTarget guifg=#80a0ff ctermfg=81
 hi CursorLine guifg=#E19972
 set nobackup
 set noswapfile
@@ -224,6 +72,7 @@ set ignorecase
 set smartcase
 set infercase
 set laststatus=2
+set statusline=%<%t\ %y%h%w%m%r%{fugitive#statusline()}%=%-14.(%l,%c%V%)\ [%{has('multi_byte')&&\&fileencoding!=''?&fileencoding:&encoding}]\ %P
 set ruler
 set number
 set nowrap
@@ -250,7 +99,5 @@ imap <C-j> <esc>
 nmap <Esc><Esc> :nohlsearch<CR><Esc>
 nmap <Tab> %
 vmap <Tab> %
-if has('nvim')
-  tnoremap <Esc> <C-\><C-n>
-endif
+tnoremap <Esc> <C-\><C-n>
 " }}}
