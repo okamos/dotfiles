@@ -108,11 +108,12 @@ initialize() {
   fi
   if has "pyenv"; then
     latest=`pyenv install --list | grep -v - | grep -oe '\d\.\d\.\d$' | tail -n 1`
-    current=`pyenv versions | grep -oe '\d\.\d\.\d$' | tail -n 1`
+    # use version
+    current=`pyenv versions | grep -oe '\d\.\d\.\d ' | tail -n 1`
     if [ ${current} != ${latest} ]; then
       pyenv install ${latest}
       pyenv global ${latest}
-      pyenv virtualenv -f `pyenv versions | grep -oe "\d\.\d\.\d" | tail -n 1` neovim3
+      pyenv virtualenv -f ${latest} neovim3
       pyenv activate neovim3
       pip install neovim
     fi
