@@ -76,19 +76,3 @@ let g:neomake_go_enabled_makers = ['golint']
 let g:neomake_error_sign = { 'texthl': 'NeomakeErrorMsg' }
 '''
 
-[[plugins]]
-repo = 'Shougo/denite.nvim'
-on_cmd = ['Denite']
-hook_add = '''
-nmap <silent> <C-u><C-u> :<C-u>Denite file_mru<CR>
-nmap <silent> <C-u><C-p> :<C-u>Denite file_rec<CR>
-nmap <silent> <C-u><C-j> :<C-u>Denite line<CR>
-'''
-hook_post_source = '''
-call denite#custom#source(
-  \ 'file_rec', 'vars', {
-  \   'command': [
-  \      'pt', '--follow', '--nocolor', '--nogroup',
-  \      '--hidden', '-g', ''
-  \   ] })
-'''
