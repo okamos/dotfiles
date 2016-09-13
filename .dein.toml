@@ -14,24 +14,6 @@ let g:deoplete#omni_patterns.ruby = ['[^. *\t]\.\w*','\h\w*::']
 '''
 
 [[plugins]]
-repo = 'Shougo/denite.nvim'
-hook_add = '''
-nmap <silent> <C-u><C-u> :<C-u>Denite file_mru<CR>
-nmap <silent> <C-u><C-p> :<C-u>Denite file_rec<CR>
-nmap <silent> <C-u><C-j> :<C-u>Denite line<CR>
-'''
-hook_post_source = '''
-call denite#custom#source(
-  \ 'file_rec', 'vars', {
-  \   'command': [
-  \      'pt', '--follow', '--nocolor', '--nogroup',
-  \      '--hidden', '-g', ''
-  \   ] })
-call denite#custom#source(
-\ 'file_mru', 'matchers', ['matcher_fuzzy', 'matcher_project_files'])
-'''
-
-[[plugins]]
 repo = 'tpope/vim-fugitive'
 
 [[plugins]]

@@ -8,13 +8,25 @@ on_i = 1
 
 [[plugins]]
 repo = 'Shougo/neoyank.vim'
-merged = 0
 on_path = '.*'
 on_i = 1
 hook_add = '''
 let g:neoyank#limit = 1000
 nmap <silent> <C-u><C-y> :<C-u>:Unite history/yank<CR>
 nnoremap <Leader><C-p> :<C-u>Unite yankround<CR>
+'''
+
+[[plugins]]
+repo = 'Shougo/denite.nvim'
+on_cmd = ['Denite']
+hook_add = '''
+nmap <silent> <C-u><C-u> :<C-u>Denite file_mru<CR>
+nmap <silent> <C-u><C-p> :<C-u>Denite file_rec<CR>
+nmap <silent> <C-u><C-j> :<C-u>Denite line<CR>
+'''
+hook_post_source = '''
+call denite#custom#source('file_rec', 'vars',
+\ { 'command': [ 'pt', '--follow', '--nocolor', '--nogroup', '--hidden', '-g', '']})
 '''
 
 [[plugins]]
@@ -47,11 +59,7 @@ repo = 'mattn/emmet-vim'
 on_ft = ['eruby', 'html', 'gohtmltmpl']
 hook_add = '''
 let g:use_emmet_complete_tag = 1
-let g:user_emmet_settings = {
-  \ 'lang' : 'ja',
-  \ 'html' : {
-  \   'indentation' : '  '
-  \ }}
+let g:user_emmet_settings = { 'lang' : 'ja', 'html' : { 'indentation' : '  ' }}
 '''
 
 [[plugins]]
