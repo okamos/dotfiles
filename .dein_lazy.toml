@@ -12,7 +12,6 @@ on_path = '.*'
 on_i = 1
 hook_add = '''
 let g:neoyank#limit = 1000
-nmap <silent> <C-u><C-y> :<C-u>:Unite history/yank<CR>
 '''
 
 [[plugins]]
@@ -23,6 +22,7 @@ nmap <silent> <C-u><C-u> :<C-u>Denite file_mru<CR>
 nmap <silent> <C-u><C-p> :<C-u>Denite file_rec<CR>
 nmap <silent> <C-u><C-j> :<C-u>Denite line<CR>
 nmap <silent> <C-u><C-g> :<C-u>Denite grep<CR>
+nmap <silent> <C-u><C-y> :<C-u>Denite neoyank<CR>
 '''
 hook_post_source = '''
 call denite#custom#var('file_rec', 'command',
