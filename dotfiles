@@ -85,7 +85,7 @@ link_files() {
 initialize() {
   run_brew
 
-  [ ! -d ${HOME}/.zplug ] && git clone https://github.com/b4b4r07/zplug ${HOME}/.zplug
+  [ ! -d ${HOME}/.zplug ] && curl -sL zplug.sh/installer | zsh
   [ ! -d ${HOME}/.tmux/plugins/tpm ] && git clone https://github.com/tmux-plugins/tpm ${HOME}/.tmux/plugins/tpm
 
   if has "nodebrew"; then

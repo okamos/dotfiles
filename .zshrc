@@ -100,7 +100,7 @@ fi
 if type nvim > /dev/null 2>&1; then
   export XDG_CONFIG_HOME=$HOME/.config
 fi
-[ -f ~/.zplug/zplug ] && source ~/.zshrc.zplug
+[ -f ~/.zplug/init.zsh ] && source ~/.init.zplug
 
 
 autoload -Uz add-zsh-hock
