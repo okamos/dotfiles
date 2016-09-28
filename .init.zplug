@@ -17,17 +17,14 @@ if zplug check yonchu/zsh-vcs-prompt; then
   ZSH_VCS_PROMPT_ENABLE_CACHING='true'
   RPROMPT='$(vcs_super_info)'${RPROMPT}
 fi
+
 if zplug check mollifier/anyframe; then
-  bindkey '^xb' anyframe-widget-cdr
   bindkey '^x^b' anyframe-widget-checkout-git-branch
+  bindkey '^x^e' anyframe-widget-insert-git-branch
 
   bindkey '^x^r' anyframe-widget-execute-history
-
   bindkey '^x^i' anyframe-widget-put-history
-
-  bindkey '^x^g' anyframe-widget-cd-ghq-repository
 
   bindkey '^x^k' anyframe-widget-kill
 
-  bindkey '^x^e' anyframe-widget-insert-git-branch
 fi

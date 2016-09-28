@@ -93,9 +93,8 @@ if type nodebrew > /dev/null 2>&1; then
   export PATH=$HOME/.nodebrew/current/bin:$PATH
 fi
 if type go > /dev/null 2>&1; then
-  export GOROOT=`go env GOROOT`;
-  export GOPATH=$HOME/go;
-  export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
+  export GOPATH=$HOME/dev;
+  export PATH=$PATH:$GOPATH/bin
 fi
 if type nvim > /dev/null 2>&1; then
   export XDG_CONFIG_HOME=$HOME/.config
