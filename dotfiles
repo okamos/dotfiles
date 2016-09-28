@@ -65,6 +65,7 @@ fi
 
 cd ${DOT_DIRECTORY}
 source ./lib/brew
+source ./lib/go
 
 link_files() {
   for f in .??*
@@ -84,6 +85,7 @@ link_files() {
 
 initialize() {
   run_brew
+  run_go
 
   [ ! -d ${HOME}/.zplug ] && curl -sL zplug.sh/installer | zsh
   [ ! -d ${HOME}/.tmux/plugins/tpm ] && git clone https://github.com/tmux-plugins/tpm ${HOME}/.tmux/plugins/tpm
