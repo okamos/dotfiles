@@ -7,3 +7,4 @@
 
 # whitelist
 !.config/nvim
+!.config/pt
