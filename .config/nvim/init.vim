@@ -37,9 +37,6 @@ let g:python3_host_prog = expand('~/.pyenv/versions/neovim3/bin/python')
 let g:loaded_ruby_provider = 1
 
 " plugin data directories {{{
-let g:neosnippet#data_directory     = expand('~/.cache/etc/.cache/neosnippet')
-let g:neosnippet#snippets_directory = [s:dein_dir.'/repos/github.com/Shougo/neosnippet-snippets/neosnippets', expand('~/dotfiles/snippets')]
-let g:unite_data_directory          = expand('~/.cache/etc/unite')
 let g:neomru#file_mru_path          = expand('~/.cache/etc/neomru/file')
 let g:neomru#directory_mru_path     = expand('~/.cache/etc/neomru/direcroty')
 let g:neoyank#file                  = expand('~/.cache/etc/.cache/neoyank')
@@ -74,10 +71,7 @@ set smartcase
 set infercase
 set laststatus=2
 set statusline=%<%t\ %y%h%w%m%r%{fugitive#statusline()}%=%-14.(%l,%c%V%)\ [%{has('multi_byte')&&\&fileencoding!=''?&fileencoding:&encoding}]\ %P
-set ruler
-set number
 set nowrap
-set list
 set wildmenu
 set showcmd
 set clipboard=unnamed
