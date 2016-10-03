@@ -26,11 +26,9 @@ repo = 'vim-scripts/matchit.zip'
 repo = 'glidenote/memolist.vim'
 hook_add = '''
 let g:memolist_gfixgrep             = 1
-let g:memolist_denite               = 1
 let g:memolist_filename_prefix_none = 1
 
 nnoremap mn  :MemoNew<CR>
-nnoremap ml  :MemoList<CR>
 nnoremap mg  :MemoGrep<CR>
 '''
 
