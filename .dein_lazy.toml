@@ -1,6 +1,9 @@
 [[plugins]]
 repo = 'Shougo/neomru.vim'
 on_path = '.*'
+hook_add = '''
+let g:neomru#file_mru_limit = 10000
+'''
 
 [[plugins]]
 repo = 'jiangmiao/auto-pairs'
@@ -9,19 +12,20 @@ on_i = 1
 [[plugins]]
 repo = 'Shougo/neoyank.vim'
 on_path = '.*'
-on_i = 1
 hook_add = '''
-let g:neoyank#limit = 1000
+let g:neoyank#limit = 10000
 '''
 
 [[plugins]]
 repo = 'Shougo/denite.nvim'
-on_cmd = ['Denite']
+depends = ['neomru.vim']
+on_event = 'BufRead'
 hook_add = '''
 nmap <silent> <C-u><C-t> :<C-u>Denite filetype<CR>
 nmap <silent> <C-u><C-p> :<C-u>Denite file_rec<CR>
 nmap <silent> <C-u><C-j> :<C-u>Denite line<CR>
 nmap <silent> <C-u><C-g> :<C-u>Denite grep<CR>
+nmap <silent> <C-u><C-]> :<C-u>DeniteCursorWord grep<CR>
 nmap <silent> <C-u><C-u> :<C-u>Denite file_mru<CR>
 nmap <silent> <C-u><C-y> :<C-u>Denite neoyank<CR>
 nnoremap ml :<C-u>call denite#start([{'name': 'file_rec', 'args': [g:memolist_path]}])<CR>
