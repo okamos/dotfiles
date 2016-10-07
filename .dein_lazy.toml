@@ -46,18 +46,6 @@ repo = 'honza/vim-snippets'
 on_i = 1
 
 [[plugins]]
-repo = 'Shougo/unite.vim'
-depends = 'neomru.vim'
-hook_add = '''
-let g:unite_enable_start_insert = 1
-let g:unite_enable_ignore_case  = 1
-let g:unite_enable_smart_case   = 1
-
-nmap <silent> <C-u><C-f> :<C-u>UniteWithBufferDir -buffer-name=files file<CR>
-nmap <silent> <C-u><C-r> :<C-u>Unite -buffer-name=register register<CR>
-'''
-
-[[plugins]]
 repo = 'mattn/emmet-vim'
 on_ft = ['eruby', 'html', 'gohtmltmpl']
 hook_add = '''
