@@ -6,6 +6,9 @@ export LANG=ja_JP.UTF-8
 export LC_ALL=ja_JP.UTF-8
 export KCODE=u
 export AUTOFEATURE=true
+export XDG_CONFIG_HOME=$HOME/.config
+export XDG_CACHE_HOME=$HOME/.cache
+export XDG_DATA_HOME=$HOME/.local/share
 
 bindkey -e
 
@@ -95,9 +98,6 @@ fi
 if type go > /dev/null 2>&1; then
   export GOPATH=$HOME/dev;
   export PATH=$PATH:$GOPATH/bin
-fi
-if type nvim > /dev/null 2>&1; then
-  export XDG_CONFIG_HOME=$HOME/.config
 fi
 [ -f ~/.zplug/init.zsh ] && source ~/.init.zplug
 

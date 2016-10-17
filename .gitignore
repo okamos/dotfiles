@@ -8,3 +8,4 @@
 # whitelist
 !.config/nvim
 !.config/pt
+!.config/git

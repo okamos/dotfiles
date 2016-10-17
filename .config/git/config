@@ -5,7 +5,6 @@
 	tool = vimdiff
 [core]
 	editor = nvim
-	excludesfile = ~/.gitignore_global
 [gui]
 	encoding = utf-8
 [color]
@@ -16,7 +15,7 @@
   interactive = auto
   grep = auto
 [init]
-	templatedir = ~/.git_template
+	templatedir = ~/.config/git/template
 [alias]
   graph = log --graph --date=short --decorate=short --pretty=format:'%Cgreen%h %Creset%cd %Cblue%cn %Cred%d %Creset%s'
 [ghq]

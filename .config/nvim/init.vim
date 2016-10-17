@@ -2,7 +2,10 @@
 if &compatible
   set nocompatible
 endif
-let s:dein_dir = expand('~/.cache/dein')
+let s:config_dir = expand($XDG_CONFIG_HOME . '/nvim')
+let s:cache_dir = expand($XDG_CACHE_HOME . '/nvim')
+
+let s:dein_dir = s:cache_dir . '/dein'
 let s:dein_repo_dir = s:dein_dir . '/repos/github.com/Shougo/dein.vim'
 
 if !isdirectory(s:dein_repo_dir)
@@ -13,8 +16,8 @@ execute 'set runtimepath^=' . s:dein_repo_dir
 if dein#load_state(s:dein_dir)
   call dein#begin(s:dein_dir)
 
-  let s:toml = '~/.dein.toml'
-  let s:lazy_toml = '~/.dein_lazy.toml'
+  let s:toml = s:config_dir . '/dein.toml'
+  let s:lazy_toml = s:config_dir . '/dein_lazy.toml'
 
   call dein#load_toml(s:toml, {'lazy': 0})
   call dein#load_toml(s:lazy_toml, {'lazy': 1})
@@ -37,9 +40,9 @@ let g:python3_host_prog = expand('~/.pyenv/versions/neovim3/bin/python')
 let g:loaded_ruby_provider = 1
 
 " plugin data directories {{{
-let g:neomru#file_mru_path          = expand('~/.cache/etc/neomru/file')
-let g:neomru#directory_mru_path     = expand('~/.cache/etc/neomru/direcroty')
-let g:neoyank#file                  = expand('~/.cache/etc/.cache/neoyank')
+let g:neomru#file_mru_path          = expand($XDG_CACHE_HOME . '/nvim/neomru/file')
+let g:neomru#directory_mru_path     = expand($XDG_CACHE_HOME . '/nvim/neomru/direcroty')
+let g:neoyank#file                  = expand($XDG_CACHE_HOME . '/nvim/neoyank')
 let g:memolist_path                 = expand('~/GoogleDrive/memolist')
 " }}}
 

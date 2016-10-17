@@ -1,8 +1,0 @@
-/vendor
-/node_modules
-/log
-/logs
-/npm-debug.log*
-/tmp
-/spec/tmp
-/.git
