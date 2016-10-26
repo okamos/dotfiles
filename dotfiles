@@ -100,6 +100,9 @@ initialize() {
     fi
   fi
   if has "rbenv"; then
+    git clone https://github.com/rbenv/rbenv-default-gems.git $(rbenv root)/plugins/rbenv-default-gems
+    echo rubocop > $(rbenv root)/default-gems
+    echo powder >> $(rbenv root)/default-gems
     # Install latest ruby
     latest=`rbenv install --list | grep -v - | tail -n 1`
     current=`rbenv versions | grep -oe '\d\.\d\.\d' | tail -n 1`
