@@ -2,6 +2,7 @@
 *~
 .DS_Store
 
+.bundle/cache
 .config/*
 .custom/previm
 

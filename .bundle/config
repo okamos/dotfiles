@@ -1,0 +1,6 @@
+---
+BUNDLE_GEM__TEST: "rspec"
+BUNDLE_GEM__MIT: "true"
+BUNDLE_GEM__COC: "true"
+BUNDLE_PATH: "vendor/bundle"
+BUNDLE_JOBS: "4"
