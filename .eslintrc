@@ -11,6 +11,9 @@ rules:
   semi:
     - 2
     - always
+  global-strict:
+    - error
+    - always
   no-console: 1
 env:
   es6: true
