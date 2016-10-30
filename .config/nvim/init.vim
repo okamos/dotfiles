@@ -77,7 +77,7 @@ set statusline=%<%t\ %y%h%w%m%r%{fugitive#statusline()}%=%-14.(%l,%c%V%)\ [%{has
 set nowrap
 set wildmenu
 set showcmd
-set clipboard=unnamed
+set clipboard+=unnamedplus
 set autoindent
 set shiftround
 set shiftwidth=2
