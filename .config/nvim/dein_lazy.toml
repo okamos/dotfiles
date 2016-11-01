@@ -69,9 +69,6 @@ hook_add = '''
 autocmd! BufWritePost * Neomake
 '''
 hook_source = '''
-let g:neomake_javascript_enabled_makers = ['eslint']
-let g:neomake_ruby_enabled_makers = ['rubocop']
-let g:neomake_go_enabled_makers = ['golint']
 let g:neomake_error_sign = { 'texthl': 'NeomakeErrorMsg' }
 '''
 
