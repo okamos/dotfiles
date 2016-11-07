@@ -85,8 +85,7 @@ set softtabstop=2
 set expandtab
 set tabstop=2
 set smarttab
-set foldmethod=indent
-set foldlevel=30
+set foldmethod=syntax
 
 "etc
 set nf=hex
