@@ -97,7 +97,7 @@ if type nodebrew > /dev/null 2>&1; then
 fi
 if type go > /dev/null 2>&1; then
   export GOPATH=$HOME/dev;
-  export PATH=$PATH:$GOPATH/bin
+  export PATH=$GOPATH/bin:$PATH
 fi
 [ -f ~/.zplug/init.zsh ] && source ~/.init.zplug
 
