@@ -86,6 +86,8 @@ set expandtab
 set tabstop=2
 set smarttab
 set foldmethod=syntax
+set timeout
+set timeoutlen=100
 
 "etc
 set nf=hex
