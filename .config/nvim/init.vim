@@ -86,6 +86,7 @@ set expandtab
 set tabstop=2
 set smarttab
 set foldmethod=syntax
+set spelllang=en,cjk
 set timeout
 set timeoutlen=100
 
