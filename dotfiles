@@ -114,8 +114,7 @@ initialize() {
   fi
   if has "pyenv"; then
     latest=`pyenv install --list | grep -v - | grep -oe '\d\.\d\.\d$' | tail -n 1`
-    # use version
-    current=`pyenv versions | grep -oe '\d\.\d\.\d ' | tail -n 1`
+    current=`pyenv versions | grep -oe '\d\.\d\{1,\}\.\d\{1,\}\([ ]\|$\)' | tail -n 1 | tr -d "[:space:]"`
     if [ ${current:-x} != ${latest} ]; then
       PYTHON_CONFIGURE_OPTS="--enable-framework"
       pyenv install ${latest}
