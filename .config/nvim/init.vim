@@ -88,7 +88,7 @@ set smarttab
 set foldmethod=syntax
 set spelllang=en,cjk
 set timeout
-set timeoutlen=100
+set timeoutlen=500
 
 "etc
 set nf=hex
