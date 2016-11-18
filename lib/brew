@@ -59,6 +59,7 @@ run_brew() {
       'tmux'
       'tree'
       'wget'
+      'yarn'
       'youtube-dl'
       'zsh'
     )
