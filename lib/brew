@@ -102,6 +102,7 @@ run_brew() {
       'dashlane'
       'dropbox'
       'firefox'
+      'franz'
       'google-chrome'
       'google-drive'
       'slack'
