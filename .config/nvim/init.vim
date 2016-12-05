@@ -95,7 +95,6 @@ set nf=hex
 set mouse=a
 
 "key-mapping
-imap <C-j> <esc>
 nmap <Esc><Esc> :nohlsearch<CR><Esc>
 nmap <Tab> %
 vmap <Tab> %
