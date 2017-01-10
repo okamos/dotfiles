@@ -125,10 +125,6 @@ initialize() {
     fi
   fi
 
-  if [ ! -e ${HOME}/.custom/previm ]; then
-    git clone https://github.com/okamos/previm_custom.git ${HOME}/.custom/previm
-  fi
-
   [ ${SHELL} != "/bin/zsh"  ] && chsh -s /bin/zsh
   echo "$(tput setaf 2)Initialize complete!. ✔︎$(tput sgr0)"
 }

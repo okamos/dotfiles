@@ -4,7 +4,6 @@
 
 .bundle/cache
 .config/*
-.custom/previm
 
 # whitelist
 !.config/nvim

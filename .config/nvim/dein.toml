@@ -38,11 +38,9 @@ nnoremap mg  :MemoGrep<CR>
 repo = 'wavded/vim-stylus'
 
 [[plugins]]
-repo = 'okamos/previm'
-rev = 'feature/custom_dir'
+repo = 'kannokanno/previm'
 hook_add = '''
 let g:previm_show_header = 0
-let g:previm_custom_dir = '~/.custom/previm'
 '''
 
 [[plugins]]
