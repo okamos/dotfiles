@@ -9,3 +9,5 @@
 !.config/nvim
 !.config/pt
 !.config/git
+!.config/composer
+.config/composer/vendor

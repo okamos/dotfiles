@@ -97,6 +97,7 @@ if type rbenv > /dev/null 2>&1; then
   eval "$(rbenv init - --no-rehash)"
 fi
 export PATH=$PATH:$XDG_CONFIG_HOME/yarn/global/node_modules/.bin
+export PATH=$PATH:$XDG_CONFIG_HOME/composer/vendor/bin
 [ -f ~/.zplug/init.zsh ] && source ~/.init.zplug
 
 
