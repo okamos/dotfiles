@@ -92,3 +92,7 @@ hook_add = '''
 let g:tagbar_left = 1
 nmap <Leader>to :TagbarOpen fj<CR>
 '''
+
+[[plugins]]
+repo = 'leafgarland/typescript-vim'
+on_ft = 'typescript'
