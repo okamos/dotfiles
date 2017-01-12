@@ -1,6 +1,6 @@
 {
   "dependencies": {
-    "tsc": "^1.20150623.0",
-    "tslint": "^4.3.1"
+    "tslint": "^4.3.1",
+    "typescript": "^2.1.5"
   }
 }
