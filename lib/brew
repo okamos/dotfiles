@@ -31,7 +31,7 @@ run_brew() {
       'composer'
       'coreutils'
       'ctags'
-      'ffmpeg --with-fdk-aac --with-fdk-aac --with-sdl2 --with-fontconfig --with-freetype --with-frei0r --with-libass --with-libbluray --with-libcaca --with-libsoxr --with-libvidstab --with-libvorbis --with-libvpx --with-opencore-amr --with-openjpeg --with-openssl --with-opus --with-rtmpdump --with-speex --with-theora --with-tools --with-x265 --with-webp'
+      'ffmpeg --with-fdk-aac --with-sdl2 --with-fontconfig --with-freetype --with-frei0r --with-libass --with-libbluray --with-libcaca --with-libsoxr --with-libvidstab --with-libvorbis --with-libvpx --with-opencore-amr --with-openjpeg --with-openssl --with-opus --with-rtmpdump --with-speex --with-theora --with-tools --with-x265 --with-webp'
       'fontforge'
       'gcc'
       'ghq'
