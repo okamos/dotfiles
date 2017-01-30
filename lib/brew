@@ -109,6 +109,7 @@ run_brew() {
       'slack'
       'skitch'
       'skype'
+      'trailer'
       'vagrant'
       'virtualbox'
       'xquartz'
