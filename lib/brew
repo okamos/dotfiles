@@ -45,6 +45,7 @@ run_brew() {
       'nkf'
       'neovim'
       'nodebrew'
+      'nuget'
       'openssl'
       'peco'
       'postgresql'
