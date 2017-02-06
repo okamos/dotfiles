@@ -43,6 +43,7 @@ call denite#custom#var('grep', 'command',
 \ ['pt', '--nogroup', '--nocolor', '--smart-case', '--hidden'])
 call denite#custom#var('grep', 'default_opts', [])
 call denite#custom#var('grep', 'recursive_opts', [])
+call denite#custom#var('grep', 'pattern_opt', [])
 '''
 
 [[plugins]]
