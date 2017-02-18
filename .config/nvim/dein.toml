@@ -50,7 +50,7 @@ repo = 'junegunn/seoul256.vim'
 repo = 'pangloss/vim-javascript'
 
 [[plugins]]
-repo = 'tpope/vim-markdown'
+repo = 'plasticboy/vim-markdown'
 
 [[plugins]]
 repo = 'othree/html5.vim'
