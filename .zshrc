@@ -104,3 +104,6 @@ export PATH=$PATH:$XDG_CONFIG_HOME/composer/vendor/bin
 autoload -Uz add-zsh-hock
 autoload -Uz chpwd_recent_dirs cdr add-zsh-hook
 autoload -Uz zmv
+
+# added by travis gem
+[ -f /Users/okamos/.travis/travis.sh ] && source /Users/okamos/.travis/travis.sh

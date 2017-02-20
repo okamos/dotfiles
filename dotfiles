@@ -104,6 +104,7 @@ initialize() {
     echo bundler > $(rbenv root)/default-gems
     echo rubocop >> $(rbenv root)/default-gems
     echo powder >> $(rbenv root)/default-gems
+    echo travis >> $(rbenv root)/default-gems
     # Install latest ruby
     latest=`rbenv install --list | grep -v - | tail -n 1`
     current=`rbenv versions | grep -oe '\d\.\d\.\d' | tail -n 1`
