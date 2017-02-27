@@ -17,6 +17,7 @@ run_brew() {
     brew tap 'homebrew/dupes'
     brew tap 'sanemat/font'
     brew tap 'peco/peco'
+    brew tap 'homebrew/php'
 
     local list_formulae
     local -a missing_formulae
@@ -49,6 +50,7 @@ run_brew() {
       'openssl'
       'packer'
       'peco'
+      'php71'
       'postgresql'
       'pyenv'
       'pyenv-virtualenv'
