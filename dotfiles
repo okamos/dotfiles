@@ -90,14 +90,10 @@ initialize() {
   [ ! -d ${HOME}/.zplug ] && curl -sL zplug.sh/installer | zsh
   [ ! -d ${HOME}/.tmux/plugins/tpm ] && git clone https://github.com/tmux-plugins/tpm ${HOME}/.tmux/plugins/tpm
 
+  set +e
   if has "nodebrew"; then
     # Install latest node
-    current=`nodebrew ls | tail -n 1 | cut -d' ' -f 2`
-    if [ ${current} = "none"  ]; then
-      curl -sL git.io/nodebrew | perl - setup
-      nodebrew install-binary latest
-      nodebrew use latest
-    fi
+    nodebrew install-binary latest && nodebrew use latest
   fi
   if has "rbenv"; then
     [ ! -d $(rbenv root)/plugins/rbenv-default-gems ] && git clone -q https://github.com/rbenv/rbenv-default-gems.git $(rbenv root)/plugins/rbenv-default-gems
@@ -106,14 +102,14 @@ initialize() {
     echo powder >> $(rbenv root)/default-gems
     echo travis >> $(rbenv root)/default-gems
     # Install latest ruby
-    latest=`rbenv install --list | grep -v - | tail -n 1`
-    current=`rbenv versions | grep -oe '\d\.\d\.\d' | tail -n 1`
-    if [ ${current} != ${latest} ]; then
+    latest=`rbenv install -l | grep -v - | tail -n 1 | tr -d ' '`
+    if ! rbenv versions | grep -e "${latest}\( \|$\)"; then
       rbenv install ${latest}
       rbenv global ${latest}
     fi
   fi
   if has "pyenv"; then
+    # without - is normal version
     latest=`pyenv install --list | grep -v - | grep -oe '\d\.\d\.\d$' | tail -n 1`
     current=`pyenv versions | grep -oe '\d\.\d\{1,\}\.\d\{1,\}\([ ]\|$\)' | tail -n 1 | tr -d "[:space:]"`
     if [ ${current:-x} != ${latest} ]; then
