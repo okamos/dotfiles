@@ -1,8 +1,8 @@
 {
   "dependencies": {
-    "dtsm": "^1.1.0",
     "eslint": "^3.13.1",
     "tslint": "^4.3.1",
-    "typescript": "^2.1.5"
+    "typescript": "^2.1.5",
+    "typings": "^2.1.0"
   }
 }
