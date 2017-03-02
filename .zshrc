@@ -96,6 +96,10 @@ if type rbenv > /dev/null 2>&1; then
   export PATH=$HOME/.rbenv/bin:$PATH
   eval "$(rbenv init - --no-rehash)"
 fi
+if type nodebrew > /dev/null 2>&1; then
+  export PATH=$HOME/.nodebrew/current/bin:$PATH
+  export NODEBREW_ROOT=/usr/local/var/nodebrew
+fi
 export PATH=$PATH:$XDG_CONFIG_HOME/yarn/global/node_modules/.bin
 export PATH=$PATH:$XDG_CONFIG_HOME/composer/vendor/bin
 [ -f ~/.zplug/init.zsh ] && source ~/.init.zplug
