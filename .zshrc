@@ -104,7 +104,6 @@ export PATH=$PATH:$XDG_CONFIG_HOME/yarn/global/node_modules/.bin
 export PATH=$PATH:$XDG_CONFIG_HOME/composer/vendor/bin
 [ -f ~/.zplug/init.zsh ] && source ~/.init.zplug
 
-
 autoload -Uz add-zsh-hock
 autoload -Uz chpwd_recent_dirs cdr add-zsh-hook
 autoload -Uz zmv

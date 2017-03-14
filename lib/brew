@@ -58,6 +58,7 @@ run_brew() {
       'ruby-build'
       'rbenv'
       'ricty --vim-powerline'
+      'rust'
       's3cmd'
       'sqlite'
       'the_platinum_searcher'
