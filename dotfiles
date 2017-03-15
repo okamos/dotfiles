@@ -121,6 +121,9 @@ initialize() {
       pip install neovim
     fi
   fi
+  if [ ! -d $HOME/.cargo ]; then
+    curl https://sh.rustup.rs -sSf | sh -s -- -y
+  fi
 
   [ ${SHELL} != "/bin/zsh"  ] && chsh -s /bin/zsh
   echo "$(tput setaf 2)Initialize complete!. ✔︎$(tput sgr0)"
