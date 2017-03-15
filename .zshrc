@@ -102,6 +102,7 @@ if type nodebrew > /dev/null 2>&1; then
 fi
 export PATH=$PATH:$XDG_CONFIG_HOME/yarn/global/node_modules/.bin
 export PATH=$PATH:$XDG_CONFIG_HOME/composer/vendor/bin
+export PATH=$PATH:$HOME/.cargo/bin
 [ -f ~/.zplug/init.zsh ] && source ~/.init.zplug
 
 autoload -Uz add-zsh-hock
