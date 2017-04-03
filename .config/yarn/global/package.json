@@ -4,6 +4,8 @@
     "node-gyp": "^3.5.0",
     "tslint": "^4.3.1",
     "typescript": "^2.1.5",
-    "typings": "^2.1.0"
+    "typings": "^2.1.0",
+    "vue": "^2.2.5",
+    "vue-cli": "^2.8.1"
   }
 }
