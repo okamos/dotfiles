@@ -39,6 +39,7 @@ run_brew() {
       'gibo'
       'git'
       'go'
+      'gpg'
       'httpd22'
       'imagemagick'
       'jq'
