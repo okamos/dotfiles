@@ -112,3 +112,4 @@ autoload -Uz zmv
 
 # added by travis gem
 [ -f /Users/okamos/.travis/travis.sh ] && source /Users/okamos/.travis/travis.sh
+export PATH="/usr/local/opt/gettext/bin:$PATH"
