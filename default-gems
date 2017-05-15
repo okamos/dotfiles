@@ -1,4 +1,5 @@
 bundler
+neovim
 rubocop
 travis
-neovim
+t
