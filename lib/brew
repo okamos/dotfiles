@@ -62,6 +62,7 @@ run_brew() {
       'ricty --vim-powerline'
       's3cmd'
       'sqlite'
+      'svn'
       'the_platinum_searcher'
       'tmux'
       'tree'
