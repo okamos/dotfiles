@@ -5,6 +5,8 @@
     "tslint": "^4.3.1",
     "typescript": "^2.1.5",
     "typings": "^2.1.0",
+    "uglify-js": "^3.0.10",
+    "uglifycss": "^0.0.27",
     "vue": "^2.2.5",
     "vue-cli": "^2.8.1"
   }
