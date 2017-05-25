@@ -18,6 +18,7 @@ run_brew() {
     brew tap 'sanemat/font'
     brew tap 'peco/peco'
     brew tap 'homebrew/php'
+    brew tap 'greymd/tools'
 
     local list_formulae
     local -a missing_formulae
@@ -65,6 +66,7 @@ run_brew() {
       'svn'
       'the_platinum_searcher'
       'tmux'
+      'tmux-xpanes'
       'tree'
       'wget'
       'yarn'

@@ -6,6 +6,7 @@ zplug "zsh-users/zsh-completions"
 zplug "yonchu/zsh-vcs-prompt", use:"zshrc.sh"
 zplug "mollifier/anyframe"
 zplug "b4b4r07/enhancd", use:"init.sh"
+zplug "greymd/tmux-xpanes"
 
 if ! zplug check; then
   zplug install
