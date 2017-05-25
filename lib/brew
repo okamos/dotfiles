@@ -44,6 +44,7 @@ run_brew() {
       'gpg'
       'httpd22'
       'imagemagick'
+      'iproute2mac'
       'jq'
       'mysql'
       'nkf'
