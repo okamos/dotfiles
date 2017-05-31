@@ -107,6 +107,10 @@ let g:tagbar_type_typescript = {
 '''
 
 [[plugins]]
+repo = 'kchmck/vim-coffee-script'
+on_ft = 'coffee'
+
+[[plugins]]
 repo = 'leafgarland/typescript-vim'
 on_ft = 'typescript'
 

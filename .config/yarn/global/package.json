@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "coffeescript": "^1.12.6",
     "eslint": "^3.13.1",
     "node-gyp": "^3.5.0",
     "tslint": "^4.3.1",
