@@ -40,7 +40,7 @@ run_brew() {
       'ghq'
       'gibo'
       'git'
-      'go'
+      'goenv'
       'gpg'
       'httpd22'
       'imagemagick'

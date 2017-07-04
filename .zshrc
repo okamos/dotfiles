@@ -89,9 +89,10 @@ if type pyenv > /dev/null 2>&1; then
   export PATH=$HOME/.pyenv/bin:$PATH
   eval "$(pyenv init -)"
 fi
-if type go > /dev/null 2>&1; then
+if type goenv > /dev/null 2>&1; then
   export GOPATH=$HOME/dev;
   export PATH=$GOPATH/bin:$PATH
+  eval "$(goenv init -)"
 fi
 if type rbenv > /dev/null 2>&1; then
   export PATH=$HOME/.rbenv/bin:$PATH
