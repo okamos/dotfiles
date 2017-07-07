@@ -84,6 +84,14 @@ link_files() {
 }
 
 initialize() {
+  git clone https://github.com/riywo/anyenv ~/.anyenv
+  exec $SHELL -l
+  anyenv install goenv
+  anyenv install rbenv
+  anyenv install pyenv
+  anyenv install phpenv
+  anyenv install ndenv
+
   run_brew
   run_go
 
@@ -91,32 +99,15 @@ initialize() {
   [ ! -d ${HOME}/.tmux/plugins/tpm ] && git clone https://github.com/tmux-plugins/tpm ${HOME}/.tmux/plugins/tpm
 
   set +e
-  if has "nodebrew"; then
-    # Install latest node
-    nodebrew install-binary latest && nodebrew use latest
+  if has "pyenv"; then
+    [ ! -d $(pyenv root)/plugins/pyenv-virtualenv ] && git clone https://github.com/yyuu/pyenv-virtualenv $(pyenv root)/plugins/pyenv-virtualenv
+    # pyenv virtualenv -f ${latest} neovim3
+    # pyenv activate neovim3
+    # pip install neovim
   fi
   if has "rbenv"; then
     [ ! -d $(rbenv root)/plugins/rbenv-default-gems ] && git clone -q https://github.com/rbenv/rbenv-default-gems.git $(rbenv root)/plugins/rbenv-default-gems
     [ ! -e $(rbenv root)/default-gems ] && cp ${DOT_DIRECTORY}/default-gems $(rbenv root)/default-gems
-    # Install latest ruby
-    latest=`rbenv install -l | grep -v - | tail -n 1 | tr -d ' '`
-    if ! rbenv versions | grep -e "${latest}\( \|$\)"; then
-      rbenv install ${latest}
-      rbenv global ${latest}
-    fi
-  fi
-  if has "pyenv"; then
-    # without - is normal version
-    latest=`pyenv install --list | grep -v - | grep -oe '\d\.\d\.\d$' | tail -n 1`
-    current=`pyenv versions | grep -oe '\d\.\d\{1,\}\.\d\{1,\}\([ ]\|$\)' | tail -n 1 | tr -d "[:space:]"`
-    if [ ${current:-x} != ${latest} ]; then
-      PYTHON_CONFIGURE_OPTS="--enable-framework"
-      pyenv install ${latest}
-      pyenv global ${latest}
-      pyenv virtualenv -f ${latest} neovim3
-      pyenv activate neovim3
-      pip install neovim
-    fi
   fi
   if [ ! -d $HOME/.cargo ]; then
     curl https://sh.rustup.rs -sSf | sh -s -- -y

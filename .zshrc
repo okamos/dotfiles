@@ -85,23 +85,9 @@ case "${OSTYPE}" in
   ;;
 esac
 
-if type pyenv > /dev/null 2>&1; then
-  export PATH=$HOME/.pyenv/bin:$PATH
-  eval "$(pyenv init -)"
-fi
-if type goenv > /dev/null 2>&1; then
-  export GOPATH=$HOME/dev;
-  export PATH=$GOPATH/bin:$PATH
-  eval "$(goenv init -)"
-fi
-if type rbenv > /dev/null 2>&1; then
-  export PATH=$HOME/.rbenv/bin:$PATH
-  eval "$(rbenv init - --no-rehash)"
-fi
-if type nodebrew > /dev/null 2>&1; then
-  export PATH=$HOME/.nodebrew/current/bin:$PATH
-  export NODEBREW_ROOT=/usr/local/var/nodebrew
-fi
+export PATH=$HOME/.anyenv/bin:$PATH
+eval "$(anyenv init -)"
+
 export PATH=$PATH:$XDG_CONFIG_HOME/yarn/global/node_modules/.bin
 export PATH=$PATH:$XDG_CONFIG_HOME/composer/vendor/bin
 export PATH=$PATH:$HOME/.cargo/bin
