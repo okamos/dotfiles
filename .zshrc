@@ -86,7 +86,7 @@ case "${OSTYPE}" in
 esac
 
 export PATH=$HOME/.anyenv/bin:$PATH
-eval "$(anyenv init -)"
+eval "$(anyenv init - --no-rehash)"
 
 export PATH=$PATH:$XDG_CONFIG_HOME/yarn/global/node_modules/.bin
 export PATH=$PATH:$XDG_CONFIG_HOME/composer/vendor/bin
