@@ -11,6 +11,7 @@
 !.config/git
 !.config/composer
 .config/composer/vendor
+.config/composer/auth.json
 !.config/yarn
 .config/yarn/link
 .config/yarn/global/node_modules
