@@ -120,7 +120,6 @@ on_ft = 'vue'
 
 [[plugins]]
 repo = 'slim-template/vim-slim'
-on_ft = 'slim'
 
 [[plugins]]
 repo = 'rust-lang/rust.vim'
