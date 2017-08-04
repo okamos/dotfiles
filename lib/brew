@@ -61,7 +61,6 @@ run_brew() {
       'qt'
       'ruby-build'
       'rbenv'
-      'ricty --vim-powerline'
       's3cmd'
       'sqlite'
       'svn'
