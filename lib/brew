@@ -68,6 +68,7 @@ run_brew() {
       'the_platinum_searcher'
       'tmux'
       'tmux-xpanes'
+      'unar'
       'tree'
       'wget'
       'yarn'
