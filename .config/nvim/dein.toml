@@ -9,10 +9,23 @@ build = 'make'
 repo = 'Shougo/deoplete.nvim'
 hook_add = '''
 let g:deoplete#enable_at_startup = 1
+let g:deoplete#enable_camel_case = 0
+let g:deoplete#enable_ignore_case = 0
+let g:deoplete#enable_smart_case = 1
+let g:deoplete#auto_complete_delay = 0
+let g:deoplete#auto_refresh_delay = 100
+let g:deoplete#enable_buffer_path = 1
 let g:deoplete#sources = {}
 let g:deoplete#sources._ = ['buffer', 'tag']
-let g:deoplete#omni_patterns = {}
-let g:deoplete#omni_patterns.ruby = ['[^. *\t]\.\w*','\h\w*::']
+'''
+
+[[plugins]]
+repo = 'carlitux/deoplete-ternjs'
+build = 'yarn global add tern'
+hook_add = '''
+let g:tern_request_timeout = 1
+let g:tern_show_signature_in_pum = '0'
+let g:tern#filetypes = ['vue']
 '''
 
 [[plugins]]
