@@ -3,6 +3,7 @@
     "coffeescript": "^1.12.6",
     "eslint": "^3.13.1",
     "eslint-config-vue": "^2.0.2",
+    "eslint-plugin-mocha": "^4.11.0",
     "eslint-plugin-vue": "^3.0.0",
     "node-gyp": "^3.5.0",
     "tern": "^0.21.0",
