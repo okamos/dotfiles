@@ -110,13 +110,17 @@ initialize() {
       ;;
   esac
 
-  git clone https://github.com/riywo/anyenv ~/.anyenv
-  exec $SHELL -l
-  anyenv install goenv
-  anyenv install rbenv
-  anyenv install pyenv
-  anyenv install phpenv
-  anyenv install ndenv
+  [ ${SHELL} != "/bin/zsh"  ] && chsh -s /bin/zsh
+
+  if [ ! -d ${HOME}/.anyenv ]; then
+    git clone https://github.com/riywo/anyenv ~/.anyenv
+    anyenv install goenv
+    anyenv install rbenv
+    anyenv install pyenv
+    anyenv install phpenv
+    anyenv install ndenv
+    exec $SHELL -l
+  fi
 
   run_go
 
@@ -138,7 +142,6 @@ initialize() {
     curl https://sh.rustup.rs -sSf | sh -s -- -y
   fi
 
-  [ ${SHELL} != "/bin/zsh"  ] && chsh -s /bin/zsh
   echo "$(tput setaf 2)Initialize complete!. ✔︎$(tput sgr0)"
 }
 
