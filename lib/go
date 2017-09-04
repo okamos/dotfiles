@@ -12,6 +12,13 @@ run_go() {
     go get github.com/golang/dep/...
     ge get github.com/motemen/ghq
 
+    if [[ $OSTYPE =~ "linux" ]]; then
+      cd $HOME/dev/src/github.com/peco/peco
+      go build cmd/peco/peco.go
+      mv peco $HOME/dev/bin/
+      cd ${DOT_DIRECTORY}
+    fi
+
     echo "$(tput setaf 2)Install go packages complete. ✔︎$(tput sgr0)"
   fi
 }

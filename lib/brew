@@ -16,7 +16,6 @@ run_brew() {
     brew tap 'homebrew/apache'
     brew tap 'homebrew/dupes'
     brew tap 'sanemat/font'
-    brew tap 'peco/peco'
     brew tap 'homebrew/php'
     brew tap 'greymd/tools'
 
