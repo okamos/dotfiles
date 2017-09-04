@@ -79,7 +79,7 @@ has() {
 }
 
 case "${OSTYPE}" in
-  darwin*)
+  darwin*|linux-gnu)
     export PATH=./vendor/bin:/usr/local/bin:/opt/local/bin:/opt/local/sbin:$PATH
     export MANPATH=/opt/local/share/man:/opt/local/man:$MANPATH
   ;;
@@ -87,19 +87,19 @@ esac
 
 export PATH=$HOME/.anyenv/bin:$PATH
 eval "$(anyenv init - --no-rehash)"
+export GOPATH=$HOME/dev
+export PATH="/usr/local/opt/gettext/bin:$PATH"
+export PATH="$HOME/dev/bin:$PATH"
 
 export PATH=$PATH:$XDG_CONFIG_HOME/yarn/global/node_modules/.bin
 export PATH=$PATH:$XDG_CONFIG_HOME/composer/vendor/bin
 export PATH=$PATH:$HOME/.cargo/bin
 [ -f ~/.zplug/init.zsh ] && source ~/.init.zplug
+[ -f ~/.travis/travis.sh ] && source ~/.travis/travis.sh
 
 autoload -Uz add-zsh-hock
 autoload -Uz chpwd_recent_dirs cdr add-zsh-hook
 autoload -Uz zmv
-
-# added by travis gem
-[ -f /Users/okamos/.travis/travis.sh ] && source /Users/okamos/.travis/travis.sh
-export PATH="/usr/local/opt/gettext/bin:$PATH"
 
 # extra function
 function google() {

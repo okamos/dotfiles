@@ -1,5 +1,6 @@
 #!/bin/bash
 set -e
+OS="$(uname -s)"
 DOT_DIRECTORY="${HOME}/dotfiles"
 DOT_TARBALL="https://github.com/okamos/dotfiles/tarball/master"
 REMOTE_URL="git@github.com:okamos/dotfiles.git"
@@ -37,16 +38,6 @@ while getopts :f:h opt; do
 done
 shift $((OPTIND - 1))
 
-# Working only OS X.
-case ${OSTYPE} in
-  darwin*)
-    ;;
-  *)
-    echo $(tput setaf 1)Working only OS X!!$(tput sgr0)
-    exit 1
-    ;;
-esac
-
 # If missing, download and extract the dotfiles repository
 if [ ! -d ${DOT_DIRECTORY} ]; then
   echo "Downloading dotfiles..."
@@ -66,6 +57,7 @@ fi
 cd ${DOT_DIRECTORY}
 source ./lib/brew
 source ./lib/go
+source ./lib/apt-get
 
 link_files() {
   for f in .??*
@@ -84,6 +76,40 @@ link_files() {
 }
 
 initialize() {
+  case ${OSTYPE} in
+    darwin*)
+      run_brew
+
+      if [ ! -e ~/Library/Fonts/Cica-Regular.ttf ]; then
+        git clone --recursive git@github.com:miiton/Cica.git
+        cd Cica
+        wget http://font.ubuntu.com/download/ubuntu-font-family-0.83.zip
+        unar ubuntu-font-family-0.83.zip
+        cp ubuntu-font-family-0.83/UbuntuMono-R.ttf ./sourceFonts
+        wget https://osdn.jp/downloads/users/8/8598/rounded-mgenplus-20150602.7z
+        unar rounded-mgenplus-20150602.7z
+        cp rounded-mgenplus-20150602/rounded-mgenplus-1m-regular.ttf ./sourceFonts
+        cp rounded-mgenplus-20150602/rounded-mgenplus-1m-bold.ttf ./sourceFonts
+        wget https://github.com/konpa/devicon/raw/master/fonts/devicon.ttf -O ./sourceFonts/devicon.ttf
+        wget https://github.com/googlei18n/noto-emoji/raw/master/fonts/NotoEmoji-Regular.ttf -O sourceFonts/NotoEmoji-Regular.ttf
+        mkdir tmp
+        mkdir Cica
+        ./cica_generator.sh auto
+        cp -f Cica/Cica*.ttf ${HOME}/Library/Fonts/
+        fc-cache -vf
+        cd ${DOT_DIRECTORY}
+        rm -rf Cica
+      fi
+      ;;
+    linux-gnu)
+      run_apt
+      ;;
+    *)
+      echo $(tput setaf 1)Working only OSX / Ubuntu!!$(tput sgr0)
+      exit 1
+      ;;
+  esac
+
   git clone https://github.com/riywo/anyenv ~/.anyenv
   exec $SHELL -l
   anyenv install goenv
@@ -92,7 +118,6 @@ initialize() {
   anyenv install phpenv
   anyenv install ndenv
 
-  run_brew
   run_go
 
   [ ! -d ${HOME}/.zplug ] && curl -sL zplug.sh/installer | zsh
@@ -111,26 +136,6 @@ initialize() {
   fi
   if [ ! -d $HOME/.cargo ]; then
     curl https://sh.rustup.rs -sSf | sh -s -- -y
-  fi
-  if [ ! -e ~/Library/Fonts/Cica-Regular.ttf ]; then
-    git clone --recursive git@github.com:miiton/Cica.git
-    cd Cica
-    wget http://font.ubuntu.com/download/ubuntu-font-family-0.83.zip
-    unar ubuntu-font-family-0.83.zip
-    cp ubuntu-font-family-0.83/UbuntuMono-R.ttf ./sourceFonts
-    wget https://osdn.jp/downloads/users/8/8598/rounded-mgenplus-20150602.7z
-    unar rounded-mgenplus-20150602.7z
-    cp rounded-mgenplus-20150602/rounded-mgenplus-1m-regular.ttf ./sourceFonts
-    cp rounded-mgenplus-20150602/rounded-mgenplus-1m-bold.ttf ./sourceFonts
-    wget https://github.com/konpa/devicon/raw/master/fonts/devicon.ttf -O ./sourceFonts/devicon.ttf
-    wget https://github.com/googlei18n/noto-emoji/raw/master/fonts/NotoEmoji-Regular.ttf -O sourceFonts/NotoEmoji-Regular.ttf
-    mkdir tmp
-    mkdir Cica
-    ./cica_generator.sh auto
-    cp -f Cica/Cica*.ttf ${HOME}/Library/Fonts/
-    fc-cache -vf
-    cd ${DOT_DIRECTORY}
-    rm -rf Cica
   fi
 
   [ ${SHELL} != "/bin/zsh"  ] && chsh -s /bin/zsh

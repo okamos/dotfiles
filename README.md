@@ -1,5 +1,5 @@
 # Dotfiles
-OS X dotfiles.
+OS X / Ubuntu dotfiles.
 
 [![asciicast](https://asciinema.org/a/47577.png)](https://asciinema.org/a/47577)
 
@@ -14,12 +14,12 @@ $ xcode-select --install
 Run the following commnad.
 
 ```
-$ bash -c "$(curl -fsSL raw.github.com/okamos/dotfiles/master/dotfiles)"
+$ bash -c "$(curl -fsSL raw.github.com/okamos/dotfiles/master/setup.sh)"
 # Overwrite dotfiles and deploy
-$ bash -c "$(curl -fsSL raw.github.com/okamos/dotfiles/master/dotfiles)" -- -f -s deploy
+$ bash -c "$(curl -fsSL raw.github.com/okamos/dotfiles/master/setup.sh)" -- -f -s deploy
 ```
 
-## Initialize OS X
+## Initialize
 
 ```
 $ ~/dotfiles/dotfiles initialize
