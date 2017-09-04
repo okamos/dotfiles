@@ -22,7 +22,6 @@ run_apt() {
     'exuberant-ctags'
     'gcc'
     'gettext'
-    'gibo'
     'git'
     'imagemagick'
     'jq'
