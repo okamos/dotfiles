@@ -53,7 +53,7 @@ on_i = 1
 
 [[plugins]]
 repo = 'mattn/emmet-vim'
-on_ft = ['eruby', 'html', 'gohtmltmpl']
+on_ft = ['eruby', 'html', 'gohtmltmpl', 'vue']
 hook_add = '''
 let g:use_emmet_complete_tag = 1
 let g:user_emmet_settings = { 'lang' : 'ja', 'html' : { 'indentation' : '  ' }}
