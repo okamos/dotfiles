@@ -23,6 +23,9 @@ build = 'yarn global add tern'
 hook_add = '''
 let g:deoplete#sources#ternjs#timeout = 1
 let g:deoplete#sources#ternjs#filetypes = ['vue']
+
+let g:tern#command = ["tern"]
+let g:tern#arguments = ["--persistent"]
 '''
 
 [[plugins]]

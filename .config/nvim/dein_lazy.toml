@@ -77,3 +77,12 @@ hook_source = '''
 let g:neomake_error_sign = { 'texthl': 'NeomakeErrorMsg' }
 "let g:neomake_verbose = 3
 '''
+
+[[plugins]]
+repo = 'ternjs/tern_for_vim'
+build = 'yarn install'
+hook_add = '''
+autocmd FileType vue call tern#Enable()
+autocmd FileType vue setlocal completeopt-=preview
+'''
+on_ft = ['javascript', 'vue']
