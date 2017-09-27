@@ -5,3 +5,6 @@ cache
 temp
 tmp
 log
+
+.tern-project
+.tern-port
