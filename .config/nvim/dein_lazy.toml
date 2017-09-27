@@ -71,9 +71,9 @@ nmap <Leader>a <Plug>(EasyAlign)
 [[plugins]]
 repo = 'neomake/neomake'
 hook_add = '''
-autocmd! BufWritePost * Neomake
+autocmd! BufWritePost,BufWinEnter * Neomake
 '''
 hook_source = '''
 let g:neomake_error_sign = { 'texthl': 'NeomakeErrorMsg' }
+"let g:neomake_verbose = 3
 '''
-
