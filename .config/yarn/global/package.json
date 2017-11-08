@@ -6,6 +6,7 @@
     "eslint-plugin-html": "^3.2.2",
     "eslint-plugin-mocha": "^4.11.0",
     "eslint-plugin-vue": "^3.0.0",
+    "node-google-apps-script": "^1.1.5",
     "node-gyp": "^3.5.0",
     "tern": "^0.21.0",
     "tslint": "^4.3.1",
