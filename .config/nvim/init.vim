@@ -88,6 +88,8 @@ set foldmethod=syntax
 set spelllang=en,cjk
 set timeout
 set timeoutlen=500
+set ttimeout
+set ttimeoutlen=50
 
 "etc
 set nf=hex
