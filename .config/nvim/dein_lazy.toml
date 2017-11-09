@@ -48,6 +48,15 @@ call denite#custom#var('grep', 'pattern_opt', [])
 '''
 
 [[plugins]]
+repo = 'SirVer/ultisnips'
+on_i = 1
+hook_add = '''
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-n>"
+let g:UltiSnipsJumpBackwardTrigger="<c-p>"
+'''
+
+[[plugins]]
 repo = 'honza/vim-snippets'
 on_i = 1
 
