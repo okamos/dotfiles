@@ -15,7 +15,12 @@ let g:deoplete#enable_smart_case = 1
 let g:deoplete#auto_complete_delay = 0
 let g:deoplete#auto_refresh_delay = 100
 let g:deoplete#enable_buffer_path = 1
+let g:deoplete#tag#cache_limit_size = 500000
 '''
+
+[[plugins]]
+repo = 'Shougo/deoplete-rct'
+on_ft = 'ruby'
 
 [[plugins]]
 repo = 'carlitux/deoplete-ternjs'
