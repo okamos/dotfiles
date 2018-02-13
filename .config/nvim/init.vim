@@ -27,9 +27,6 @@ if dein#load_state(s:dein_dir)
 endif
 
 if dein#check_install()
-  call dein#install('vimproc')
-endif
-if dein#check_install()
   call dein#install()
 endif
 " }}}
@@ -39,9 +36,7 @@ let g:python_host_prog = expand('~/.anyenv/envs/pyenv/versions/neovim2/bin/pytho
 let g:python3_host_prog = expand('~/.anyenv/envs/pyenv/versions/neovim3/bin/python')
 
 " plugin data directories {{{
-let g:neomru#file_mru_path          = expand($XDG_CACHE_HOME . '/nvim/neomru/file')
-let g:neomru#directory_mru_path     = expand($XDG_CACHE_HOME . '/nvim/neomru/direcroty')
-let g:neoyank#file                  = expand($XDG_CACHE_HOME . '/nvim/neoyank')
+let g:ctrlp_cache_dir          = expand($XDG_CACHE_HOME . '/nvim/ctrlp')
 let g:memolist_path                 = expand('~/GoogleDrive/memolist')
 " }}}
 
@@ -90,6 +85,7 @@ set timeout
 set timeoutlen=500
 set ttimeout
 set ttimeoutlen=50
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip
 
 "etc
 set nf=hex
@@ -99,5 +95,7 @@ set mouse=a
 nmap <Esc><Esc> :nohlsearch<CR><Esc>
 nmap <Tab> %
 vmap <Tab> %
+nmap <silent> c] :cnext<CR>
+nmap <silent> c[ :cprevious<CR>
 tnoremap <Esc> <C-\><C-n>
 " }}}
