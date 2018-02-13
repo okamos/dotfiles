@@ -1,11 +1,12 @@
 {
   "dependencies": {
-    "coffeescript": "^1.12.6",
+    "coffeescript": "^2.2.1",
     "eslint": "^3.13.1",
     "eslint-config-vue": "^2.0.2",
     "eslint-plugin-html": "^3.2.2",
     "eslint-plugin-mocha": "^4.11.0",
     "eslint-plugin-vue": "^3.0.0",
+    "http-server": "^0.10.0",
     "node-google-apps-script": "^1.1.5",
     "node-gyp": "^3.5.0",
     "tern": "^0.21.0",
@@ -13,8 +14,6 @@
     "typescript": "^2.1.5",
     "typings": "^2.1.0",
     "uglify-js": "^3.0.10",
-    "uglifycss": "^0.0.27",
-    "vue": "^2.2.5",
-    "vue-cli": "^2.8.1"
+    "uglifycss": "^0.0.27"
   }
 }
