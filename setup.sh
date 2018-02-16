@@ -81,24 +81,10 @@ initialize() {
       run_brew
 
       if [ ! -e ~/Library/Fonts/Cica-Regular.ttf ]; then
-        git clone --recursive git@github.com:miiton/Cica.git
-        cd Cica
-        wget http://font.ubuntu.com/download/ubuntu-font-family-0.83.zip
-        unar ubuntu-font-family-0.83.zip
-        cp ubuntu-font-family-0.83/UbuntuMono-R.ttf ./sourceFonts
-        wget https://osdn.jp/downloads/users/8/8598/rounded-mgenplus-20150602.7z
-        unar rounded-mgenplus-20150602.7z
-        cp rounded-mgenplus-20150602/rounded-mgenplus-1m-regular.ttf ./sourceFonts
-        cp rounded-mgenplus-20150602/rounded-mgenplus-1m-bold.ttf ./sourceFonts
-        wget https://github.com/konpa/devicon/raw/master/fonts/devicon.ttf -O ./sourceFonts/devicon.ttf
-        wget https://github.com/googlei18n/noto-emoji/raw/master/fonts/NotoEmoji-Regular.ttf -O sourceFonts/NotoEmoji-Regular.ttf
-        mkdir tmp
-        mkdir Cica
-        ./cica_generator.sh auto
-        cp -f Cica/Cica*.ttf ${HOME}/Library/Fonts/
-        fc-cache -vf
-        cd ${DOT_DIRECTORY}
-        rm -rf Cica
+        wget https://github.com/miiton/Cica/releases/download/v2.1.0/Cica_v2.1.0.zip
+        unar Cica_v2.1.0.zip
+        cp -f Cica_v2.1.0/Cica*.ttf ${HOME}/Library/Fonts/
+        rm -rf Cica_v2.1.0*
       fi
       ;;
     linux-gnu)
