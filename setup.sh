@@ -58,6 +58,7 @@ cd ${DOT_DIRECTORY}
 source ./lib/brew
 source ./lib/go
 source ./lib/apt-get
+source ./lib/yarn
 
 link_files() {
   for f in .??*
@@ -109,6 +110,7 @@ initialize() {
   fi
 
   run_go
+  run_yarn
 
   [ ! -d ${HOME}/.zplug ] && curl -sL zplug.sh/installer | zsh
   [ ! -d ${HOME}/.tmux/plugins/tpm ] && git clone https://github.com/tmux-plugins/tpm ${HOME}/.tmux/plugins/tpm
