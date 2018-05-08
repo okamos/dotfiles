@@ -98,6 +98,10 @@ export PATH=$PATH:$HOME/.cargo/bin
 [ -f ~/.zplug/init.zsh ] && source ~/.init.zplug
 [ -f ~/.travis/travis.sh ] && source ~/.travis/travis.sh
 
+if [ -d ~/dev/google-cloud-sdk ]; then
+  source /Users/okamos/dev/google-cloud-sdk/completion.zsh.inc
+  source /Users/okamos/dev/google-cloud-sdk/path.zsh.inc
+fi
 autoload -Uz add-zsh-hock
 autoload -Uz chpwd_recent_dirs cdr add-zsh-hook
 autoload -Uz zmv
