@@ -99,3 +99,21 @@ nmap <silent> c] :cnext<CR>
 nmap <silent> c[ :cprevious<CR>
 tnoremap <Esc> <C-\><C-n>
 " }}}
+" functions {{{
+function! s:setFileType()
+  if searchpair('<script', '', '</script>', 'bnW')
+    set ft=javascript
+  elseif searchpair('<style', '', '</style>', 'bnW')
+    set ft=css
+  elseif searchpair('<i18n', '', '</i18n>', 'bnW')
+    set ft=json
+  else
+    set ft=html
+  endif
+endfunction
+augroup vueBinds
+  au!
+  au User *.vue call s:setFileType()
+augroup END
+nmap <silent> tu :doautocmd User<CR>
+" }}}
