@@ -89,7 +89,8 @@ export PATH=$HOME/.anyenv/bin:$PATH
 eval "$(anyenv init - --no-rehash)"
 export GOPATH=$HOME/dev
 export GOROOT=$(go env GOROOT)
-export PATH="/usr/local/opt/gettext/bin:$PATH"
+export PATH=/usr/local/opt/gettext/bin:$PATH
+export PATH=$HOME/dev/github.com/flutter/flutter/bin:$PATH
 export PATH="$HOME/dev/bin:$PATH"
 
 export PATH=$PATH:$XDG_CONFIG_HOME/yarn/global/node_modules/.bin

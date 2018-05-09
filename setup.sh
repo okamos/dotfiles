@@ -114,6 +114,8 @@ initialize() {
 
   [ ! -d ${HOME}/.zplug ] && curl -sL zplug.sh/installer | zsh
   [ ! -d ${HOME}/.tmux/plugins/tpm ] && git clone https://github.com/tmux-plugins/tpm ${HOME}/.tmux/plugins/tpm
+  ghq get -u flutter/flutter.git
+  flutter doctor
 
   set +e
   if has "pyenv"; then

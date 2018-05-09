@@ -29,9 +29,11 @@ run_brew() {
       'android-sdk'
       'ansible'
       'asciinema'
+      'cocoapods'
       'composer'
       'coreutils'
       'ctags'
+      'dart'
       'ffmpeg --with-fdk-aac --with-sdl2 --with-fontconfig --with-freetype --with-frei0r --with-libass --with-libbluray --with-libcaca --with-libsoxr --with-libvidstab --with-libvorbis --with-libvpx --with-opencore-amr --with-openjpeg --with-openssl --with-opus --with-rtmpdump --with-speex --with-theora --with-tools --with-x265 --with-webp'
       'fontforge'
       'gcc'
@@ -40,9 +42,12 @@ run_brew() {
       'git'
       'gpg'
       'httpd22'
+      'ideviceinstaller'
       'imagemagick'
+      'ios-deploy'
       'iproute2mac'
       'jq'
+      'libimobiledevice'
       'mysql'
       'nkf'
       'neovim'
@@ -112,6 +117,7 @@ run_brew() {
       'trailer'
       'vagrant'
       'virtualbox'
+      'visual-studio-code'
       'xquartz'
     )
     # cask
@@ -126,6 +132,8 @@ run_brew() {
         echo "Installed ${formula}"
       fi
     done
+
+    pod setup
 
     if [[ "$missing_formulae" ]]; then
       list_formulae=$( printf "%s " "${missing_formulae[@]}" )
