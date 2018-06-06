@@ -23,7 +23,6 @@ setopt notify
 setopt equals
 
 ### Complement ###
-autoload -U compinit; compinit
 setopt auto_list                     # 補完候補を一覧で表示する(d)
 setopt auto_menu                     # 補完キー連打で補完候補を順に表示する(d)
 setopt list_packed
@@ -73,11 +72,6 @@ PROMPT=$tmp_prompt
 # ------------------------------
 # Other Settings
 # ------------------------------
-### path ###
-has() {
-  type "$1" > /dev/null 2>&1
-}
-
 case "${OSTYPE}" in
   darwin*|linux-gnu)
     export PATH=./vendor/bin:/usr/local/bin:/opt/local/bin:/opt/local/sbin:$PATH
@@ -99,6 +93,7 @@ export PATH=$PATH:$HOME/.cargo/bin
 [ -f ~/.zplug/init.zsh ] && source ~/.init.zplug
 [ -f ~/.travis/travis.sh ] && source ~/.travis/travis.sh
 
+fpath=(/usr/local/share/zsh/site-functions $fpath)
 if [ -d ~/dev/google-cloud-sdk ]; then
   source /Users/okamos/dev/google-cloud-sdk/completion.zsh.inc
   source /Users/okamos/dev/google-cloud-sdk/path.zsh.inc

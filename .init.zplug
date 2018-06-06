@@ -2,14 +2,16 @@
 source ~/.zplug/init.zsh
 
 zplug "zsh-users/zsh-syntax-highlighting"
-zplug "zsh-users/zsh-completions"
 zplug "yonchu/zsh-vcs-prompt", use:"zshrc.sh"
 zplug "mollifier/anyframe"
 zplug "b4b4r07/enhancd", use:"init.sh"
 zplug "greymd/tmux-xpanes"
 
-if ! zplug check; then
-  zplug install
+if [ ! ~/.zplug/last_zshrc_check_time -nt ~/.zshrc ]; then
+  touch ~/.zplug/last_zshrc_check_time
+  if ! zplug check; then
+    zplug install
+  fi
 fi
 
 zplug load
@@ -27,5 +29,4 @@ if zplug check mollifier/anyframe; then
   bindkey '^x^i' anyframe-widget-put-history
 
   bindkey '^x^k' anyframe-widget-kill
-
 fi
