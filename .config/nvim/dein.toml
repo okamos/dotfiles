@@ -55,7 +55,7 @@ nmap mg  :MemoGrep<CR>
 '''
 
 [[plugins]]
-repo = 'kannokanno/previm'
+repo = 'previm/previm'
 hook_add = '''
 let g:previm_show_header = 0
 '''
