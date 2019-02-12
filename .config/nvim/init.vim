@@ -58,6 +58,7 @@ try
   colorscheme seoul256
 catch
 endtry
+set spell
 hi CursorLine guifg=#E19972
 set nobackup
 set noswapfile
