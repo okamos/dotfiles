@@ -22,3 +22,5 @@
 	root = ~/dev
 [ghq "http:/plugins.svn.wordpress.org/"]
   vcs = svn
+[url "git@github.com:"]
+	insteadOf = https://github.com/
