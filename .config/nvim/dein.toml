@@ -2,28 +2,26 @@
 repo = 'Shougo/dein.vim'
 
 [[plugins]]
-repo = 'ctrlpvim/ctrlp.vim'
+repo = 'junegunn/seoul256.vim'
+
+[[plugins]]
+repo = 'junegunn/fzf'
+build = './install'
+merged = 0
 hook_add = '''
-let g:ctrlp_map = '<Nop>'
-let g:ctrlp_use_caching = 0
-let g:ctrlp_max_height = 15
-let g:ctrlp_prompt_mappings = {
-  \ 'PrtClearCache()':      ['<c-r>'],
-  \ }
-
-if executable('pt')
-  set grepprg=pt\ --nogroup\ --nocolor
-  let g:ctrlp_user_command = 'pt -l --nocolor --hidden --nogroup -g "" %s'
-  command! -nargs=+ -complete=file MyGrep grep! <args>|cw
-endif
-
-nmap <silent> <C-u><C-p> :<C-u>CtrlP<CR>
-nmap <silent> <C-u><C-u> :<C-u>CtrlPMRUFiles<CR>
-nmap <silent> <C-u><C-b> :<C-u>CtrlPBuffer<CR>
-nmap <silent> <C-u><C-l> :<C-u>CtrlPLine<CR>
-nmap <silent> <C-u><C-d> :<C-u>CtrlPBookmarkDir<CR>
-nmap <silent> <C-u><C-g> :<C-u>silent MyGrep<space>
+function! s:find_git_root()
+  return system('git rev-parse --show-toplevel 2> /dev/null')[:-2]
+endfunction
+command! -bang -nargs=* GGrep
+  \ call fzf#vim#grep(
+  \   'pt --column --ignore=.git --global-gitignore '.shellescape(<q-args>), 1,
+  \   <bang>0 ? fzf#vim#with_preview('up:60%')
+  \           : fzf#vim#with_preview({ 'dir': s:find_git_root() }),
+  \   <bang>0)
 '''
+
+[[plugins]]
+repo = 'junegunn/fzf.vim'
 
 [[plugins]]
 repo = 'Shougo/deoplete.nvim'
@@ -59,9 +57,6 @@ repo = 'previm/previm'
 hook_add = '''
 let g:previm_show_header = 0
 '''
-
-[[plugins]]
-repo = 'junegunn/seoul256.vim'
 
 [[plugins]]
 repo = 'plasticboy/vim-markdown'
