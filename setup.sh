@@ -132,6 +132,15 @@ initialize() {
     curl https://sh.rustup.rs -sSf | sh -s -- -y
   fi
 
+  if [ ! -f ${HOME}/Library/Fonts/Cica-Regular.ttf ]; then
+    cd ${HOME}
+    git clone https://github.com/miiton/Cica.git
+    cd Cica
+    docker-compose build ; docker-compose run --rm cica
+    cp dist/*.ttf ${HOME}/Library/Fonts/
+    fc-cache -vf
+  fi
+
   echo "$(tput setaf 2)Initialize complete!. ✔︎$(tput sgr0)"
 }
 
