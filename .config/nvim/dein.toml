@@ -22,6 +22,9 @@ command! -bang -nargs=* GGrep
 
 [[plugins]]
 repo = 'junegunn/fzf.vim'
+hook_add = '''
+let g:fzf_history_dir = '~/.cache/nvim/fzf-history'
+'''
 
 [[plugins]]
 repo = 'Shougo/deoplete.nvim'
