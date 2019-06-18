@@ -1,1 +1,1 @@
-ctags -L ${HOME}/.ctags -f .git/tags .
+rm .git/tags && ctags -L ${HOME}/.ctags -f .git/tags .
