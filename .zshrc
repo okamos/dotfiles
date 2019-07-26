@@ -35,14 +35,15 @@ setopt extended_glob
 unsetopt caseglob
 
 ### History ###
-HISTFILE=~/.zsh_history
-HISTSIZE=10000
-SAVEHIST=10000
+export HISTFILE=~/.zsh_history
+export HISTSIZE=10000
+export SAVEHIST=10000
 setopt bang_hist          # !を使ったヒストリ展開を行う(d)
 setopt extended_history
 setopt hist_ignore_dups
 setopt share_history
 setopt hist_reduce_blanks
+setopt hist_ignore_space
 autoload history-search-end
 zle -N history-beginning-search-backward-end history-search-end
 zle -N history-beginning-search-forward-end history-search-end
@@ -86,6 +87,7 @@ export PATH=/usr/local/opt/gettext/bin:$PATH
 export PATH=$HOME/dev/github.com/flutter/flutter/bin:$PATH
 export PATH="$HOME/dev/bin:$PATH"
 
+export PATH=$PATH:$(go env GOPATH)/bin
 export PATH=$PATH:$XDG_CONFIG_HOME/yarn/global/node_modules/.bin
 export PATH=$PATH:$XDG_CONFIG_HOME/composer/vendor/bin
 export PATH=$PATH:$HOME/.cargo/bin
