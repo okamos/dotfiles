@@ -15,3 +15,4 @@
 !.config/yarn
 .config/yarn/link
 .config/yarn/global/node_modules
+!.config/alacritty
