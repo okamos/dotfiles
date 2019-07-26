@@ -68,7 +68,7 @@ set ignorecase
 set smartcase
 set infercase
 set laststatus=2
-set statusline=%<%t\ %y%h%w%m%r%{fugitive#statusline()}%=%-14.(%l,%c%V%)\ [%{has('multi_byte')&&\&fileencoding!=''?&fileencoding:&encoding}]\ %P
+set statusline=%<%t\ %y%h%w%m%r%{FugitiveStatusline()}%=%-14.(%l,%c%V%)\ [%{has('multi_byte')&&\&fileencoding!=''?&fileencoding:&encoding}]\ %P
 set nowrap
 set wildmenu
 set showcmd
