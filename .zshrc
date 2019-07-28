@@ -91,7 +91,6 @@ export PATH=$PATH:$(go env GOPATH)/bin
 export PATH=$PATH:$XDG_CONFIG_HOME/yarn/global/node_modules/.bin
 export PATH=$PATH:$XDG_CONFIG_HOME/composer/vendor/bin
 export PATH=$PATH:$HOME/.cargo/bin
-[ -f ~/.zplug/init.zsh ] && source ~/.init.zplug
 [ -f ~/.travis/travis.sh ] && source ~/.travis/travis.sh
 
 fpath=(/usr/local/share/zsh/site-functions $fpath)
@@ -119,3 +118,10 @@ function google() {
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 [ -f ~/.zshrc.local ] && source ~/.zshrc.local
+
+source '/Users/okamos/.zplugin/bin/zplugin.zsh'
+autoload -Uz _zplugin
+(( ${+_comps} )) && _comps[zplugin]=_zplugin
+zplugin ice wait'0' zsh-users/zsh-autosuggestions
+zplugin ice wait'0' zdharma/fast-syntax-highlighting
+zplugin ice wait'0' light greymd/tmux-xpanes
