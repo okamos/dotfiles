@@ -6,7 +6,6 @@ repo = 'junegunn/seoul256.vim'
 
 [[plugins]]
 repo = 'junegunn/fzf'
-build = './install'
 merged = 0
 hook_add = '''
 function! s:find_git_root()
