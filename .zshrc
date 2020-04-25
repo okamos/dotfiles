@@ -122,6 +122,6 @@ function google() {
 source '/Users/okamos/.zplugin/bin/zplugin.zsh'
 autoload -Uz _zplugin
 (( ${+_comps} )) && _comps[zplugin]=_zplugin
-zplugin ice wait'0' zsh-users/zsh-autosuggestions
-zplugin ice wait'0' zdharma/fast-syntax-highlighting
-zplugin ice wait'0' light greymd/tmux-xpanes
+zplugin light zsh-users/zsh-autosuggestions
+zplugin light zdharma/fast-syntax-highlighting
+zplugin light greymd/tmux-xpanes
