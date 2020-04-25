@@ -132,4 +132,10 @@ let g:ale_linters = {
   \ 'vue': ['eslint']
   \ }
 let g:ale_linter_aliases = {'vue': 'css'}
+let g:ale_fixers = {
+  \ 'ruby': ['rubocop']
+  \ }
 '''
+
+[[plugins]]
+repo = 'ngmy/vim-rubocop'
