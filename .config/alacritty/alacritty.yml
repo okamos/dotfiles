@@ -277,7 +277,7 @@ visual_bell:
 #
 # Window opacity as a floating point number from `0.0` to `1.0`.
 # The value `0.0` is completely transparent and `1.0` is opaque.
-background_opacity: 1.0
+background_opacity: 0.7
 
 selection:
   semantic_escape_chars: ",│`|:\"' ()[]{}<>"
@@ -647,6 +647,8 @@ key_bindings:
   - { key: F11,      mods: Super,   chars: "\x1b[23;3~"                      }
   - { key: F12,      mods: Super,   chars: "\x1b[24;3~"                      }
   - { key: NumpadEnter,             chars: "\n"                              }
+  - { key: Yen,             chars: "\x5C"                              }
+  - { key: Yen,      mods: Alt,       chars: "\x4C"                              }
 
 # customize
   - { key: LBracket, mods: Control, chars: "\x9b" }
