@@ -97,13 +97,17 @@ au FileType go nmap <Leader>gv <Plug>(go-doc-vertical)
 repo = 'othree/yajs.vim'
 on_ft = ['javascript', 'vue']
 
+[[plguins]]
+repo = 'leafgarland/typescript-vim'
+on_ft = ['typescript']
+
+[[plugins]]
+repo = 'peitalin/vim-jsx-typescript'
+on_ft = ['typescriptreact']
+
 [[plugins]]
 repo = 'kchmck/vim-coffee-script'
 on_ft = 'coffee'
-
-[[plugins]]
-repo = 'leafgarland/typescript-vim'
-on_ft = 'typescript'
 
 [[plugins]]
 repo = 'hashivim/vim-terraform'
