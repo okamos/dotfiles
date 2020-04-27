@@ -96,8 +96,9 @@ set mouse=a
 nmap <Esc><Esc> :nohlsearch<CR><Esc>
 nmap <Tab> %
 vmap <Tab> %
-nmap <silent> c] :cnext<CR>
-nmap <silent> c[ :cprevious<CR>
+map silent <C-n> :cnext<CR>
+map silent <C-m> :cprevious<CR>
+nnoremap <leader>a :cclose<CR>
 tnoremap <Esc> <C-\><C-n>
 " }}}
 " functions {{{
