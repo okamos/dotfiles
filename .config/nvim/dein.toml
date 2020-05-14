@@ -142,3 +142,6 @@ let g:ale_fixers = {
 
 [[plugins]]
 repo = 'ngmy/vim-rubocop'
+
+[[plugins]]
+repo = 'tidalcycles/vim-tidal'
