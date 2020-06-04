@@ -5,6 +5,7 @@
 	tool = vimdiff
 [core]
 	editor = nvim
+  pager = delta --plus-color="#012800" --minus-color="#340001" --theme='Monokai Extended'
 [gui]
 	encoding = utf-8
 [color]
@@ -18,6 +19,8 @@
 	templatedir = ~/.config/git/template
 [alias]
   graph = log --graph --date=short --decorate=short --pretty=format:'%Cgreen%h %Creset%cd %Cblue%cn %Cred%d %Creset%s'
+[interactive]
+  diffFilter = delta --color-only
 [ghq]
 	root = ~/dev
 [ghq "http:/plugins.svn.wordpress.org/"]
