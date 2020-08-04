@@ -26,17 +26,34 @@ let g:fzf_history_dir = '~/.cache/nvim/fzf-history'
 '''
 
 [[plugins]]
-repo = 'Shougo/deoplete.nvim'
+repo = 'prabirshrestha/async.vim'
+
+[[plugins]]
+repo = 'prabirshrestha/asyncomplete.vim'
 hook_add = '''
-let g:deoplete#enable_at_startup = 1
-let g:deoplete#enable_camel_case = 0
-let g:deoplete#enable_ignore_case = 0
-let g:deoplete#enable_smart_case = 1
-let g:deoplete#auto_complete_delay = 0
-let g:deoplete#auto_refresh_delay = 100
-let g:deoplete#enable_buffer_path = 1
-let g:deoplete#tag#cache_limit_size = 500000
+if executable('pyls')
+  au User lsp_setup call lsp#register_server({
+    \ 'name': 'pyls',
+    \ 'cmd': {server_info->['pyls']},
+    \ 'whitelist': ['python'],
+    \ })
+endif
+
+if executable('gopls')
+  au User lsp_setup call lsp#register_server({
+    \ 'name': 'gopls',
+    \ 'cmd': {server_info->['gopls']},
+    \ 'whitelist': ['go'],
+    \ })
+  autocmd BufWritePre *.go LspDocumentFormatSync
+endif
 '''
+
+[[plugins]]
+repo = 'prabirshrestha/vim-lsp'
+
+[[plugins]]
+repo = 'prabirshrestha/asyncomplete-lsp.vim'
 
 [[plugins]]
 repo = 'tpope/vim-fugitive'
@@ -77,8 +94,8 @@ on_ft = 'toml'
 repo = 'fatih/vim-go'
 on_ft = 'go'
 hook_add = '''
-let g:go_fmt_command = "goimports"
-let g:go_list_type = "quickfix"
+let g:go_fmt_command = 'goimports'
+let g:go_list_type = 'quickfix'
 let g:go_metalinter_autosave_enabled = ['vet', 'golint']
 let g:go_auto_type_info = 1
 au FileType go nmap <leader>r <Plug>(go-run)
