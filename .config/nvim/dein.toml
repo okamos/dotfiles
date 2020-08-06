@@ -31,6 +31,8 @@ repo = 'prabirshrestha/async.vim'
 [[plugins]]
 repo = 'prabirshrestha/asyncomplete.vim'
 hook_add = '''
+let g:asyncomplete_auto_popup = 0
+
 if executable('pyls')
   au User lsp_setup call lsp#register_server({
     \ 'name': 'pyls',
