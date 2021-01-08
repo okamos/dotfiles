@@ -33,7 +33,7 @@ run_brew() {
       'composer'
       'coreutils'
       'ctags'
-      'delta'
+      'direnv'
       # 'dart'
       'ffmpeg'
       'fontforge'

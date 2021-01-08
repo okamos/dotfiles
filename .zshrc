@@ -1,7 +1,7 @@
 # ------------------------------
 # General Settings
 # ------------------------------
-export EDITOR=vim
+export EDITOR=nvim
 export LANG=ja_JP.UTF-8
 export LC_ALL=ja_JP.UTF-8
 export KCODE=u
@@ -73,6 +73,10 @@ PROMPT=$tmp_prompt
 # ------------------------------
 # Other Settings
 # ------------------------------
+has() {
+  type "$1" > /dev/null 2>&1
+}
+
 case "${OSTYPE}" in
   darwin*|linux-gnu)
     export PATH=./vendor/bin:/usr/local/bin:/opt/local/bin:/opt/local/sbin:$PATH
@@ -80,12 +84,17 @@ case "${OSTYPE}" in
   ;;
 esac
 
-export PATH=$HOME/.anyenv/bin:$PATH
-eval "$(anyenv init - --no-rehash)"
 export PATH=/usr/local/opt/gettext/bin:$PATH
 export PATH=$HOME/dev/github.com/flutter/flutter/bin:$PATH
 export PATH="$HOME/dev/bin:$PATH"
 
+if [ -d ~/.anyenv ]; then
+  export PATH=$HOME/.anyenv/bin:$PATH
+  eval "$(anyenv init - --no-rehash)"
+fi
+if has "direnv"; then
+  eval "$(direnv hook zsh)"
+fi
 export PATH=$PATH:$HOME/go/bin
 export PATH=$PATH:$HOME/maven/bin
 export PATH=$PATH:$XDG_CONFIG_HOME/yarn/global/node_modules/.bin
