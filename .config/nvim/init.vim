@@ -27,7 +27,8 @@ Plug 'previm/previm'
 Plug 'plasticboy/vim-markdown'
 Plug 'tyru/open-browser.vim'
 
-Plug 'othree/yajs.vim', { 'for': ['javascript', 'vue'] }
+Plug 'othree/yajs.vim', { 'for': ['javascript'] }
+Plug 'posva/vim-vue', { 'for': ['vue'] }
 Plug 'peitalin/vim-jsx-typescript', { 'for': ['typescript', 'typescriptreact'] }
 Plug 'hashivim/vim-terraform' 
 Plug 'rust-lang/rust.vim', { 'for': 'rust' }
