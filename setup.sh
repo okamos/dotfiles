@@ -91,12 +91,9 @@ initialize() {
   [ ${SHELL} != "/bin/zsh"  ] && chsh -s /bin/zsh
 
   if [ ! -d ${HOME}/.anyenv ]; then
-    git clone https://github.com/riywo/anyenv ~/.anyenv
-    anyenv install goenv
-    anyenv install rbenv
-    anyenv install pyenv
-    anyenv install phpenv
-    anyenv install ndenv
+    anyenv init
+    anyenv install tfenv
+    anyenv install nodenv
     exec $SHELL -l
   fi
 
@@ -107,12 +104,6 @@ initialize() {
   flutter doctor
 
   set +e
-  if has "pyenv"; then
-    [ ! -d $(pyenv root)/plugins/pyenv-virtualenv ] && git clone https://github.com/yyuu/pyenv-virtualenv $(pyenv root)/plugins/pyenv-virtualenv
-    # pyenv virtualenv -f ${latest} neovim3
-    # pyenv activate neovim3
-    # pip install neovim
-  fi
   if has "rbenv"; then
     [ ! -d $(rbenv root)/plugins/rbenv-default-gems ] && git clone -q https://github.com/rbenv/rbenv-default-gems.git $(rbenv root)/plugins/rbenv-default-gems
     [ ! -e $(rbenv root)/default-gems ] && cp ${DOT_DIRECTORY}/default-gems $(rbenv root)/default-gems
