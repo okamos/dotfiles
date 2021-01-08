@@ -78,11 +78,11 @@ link_files() {
 
 initialize() {
   case ${OSTYPE} in
-    "darwin*" )
+    darwin*)
       run_brew ;;
-    "linux-gnu" )
+    linux-gnu)
       run_apt ;;
-    "*" )
+    *)
       echo $(tput setaf 1)Working only OSX / Ubuntu!!$(tput sgr0)
       exit 1 ;;
   esac

@@ -9,15 +9,8 @@ run_brew() {
 
   if has "brew"; then
     echo "Updating Homebrew..."
-    brew update && brew upgrade
+    brew upgrade
     [[ $? ]] && echo "$(tput setaf 2)Update Homebrew complete. ✔︎$(tput sgr0)"
-
-    brew tap 'caskroom/cask'
-    # brew tap 'homebrew/apache'
-    # brew tap 'homebrew/dupes'
-    brew tap 'sanemat/font'
-    # brew tap 'homebrew/php'
-    brew tap 'greymd/tools'
 
     local list_formulae
     local -a missing_formulae
@@ -28,14 +21,16 @@ run_brew() {
       'awscli'
       # 'android-sdk'
       'ansible'
+      'anyenv'
       'asciinema'
       'cocoapods'
       'composer'
       'coreutils'
       'ctags'
       'direnv'
+      'docker-compose'
+      'git-delta'
       # 'dart'
-      'ffmpeg'
       'fontforge'
       'gcc'
       'gettext'
@@ -57,21 +52,22 @@ run_brew() {
       'peco'
       'postgresql'
       'qt'
-      's3cmd'
       'sqlite'
       'svn'
       'the_platinum_searcher'
       'tmux'
       'tmux-xpanes'
       'unar'
+      'tig'
       'tree'
+      'w3m'
       'wget'
       'yarn'
       'youtube-dl'
       'zsh'
     )
 
-    local installed=`brew list`
+    local installed=`brew list --formula`
 
     for index in ${!desired_formulae[*]}
     do
@@ -80,7 +76,6 @@ run_brew() {
         missing_formulae=("${missing_formulae[@]}" "${desired_formulae[$index]}")
       else
         echo "Installed ${formula}"
-        [[ "${formula}" = "ricty" ]] && local installed_ricty=true
       fi
     done
 
@@ -95,31 +90,20 @@ run_brew() {
 
     ln -sfv /usr/local/opt/mysql/*.plist ~/Library/LaunchAgents
     ln -sfv /usr/local/opt/postgresql/*.plist ~/Library/LaunchAgents
-    if [ -z "${installed_ricty}"  ]; then
-      echo "Reload fonts. This could take a while..."
-      local cellar=`brew --config | grep 'HOMEBREW_CELLAR' | cut -d' ' -f 2`
-      find ${cellar}/ricty/*/share/fonts/Ricty*.ttf | xargs -I % cp % ~/Library/Fonts
-      fc-cache -vf
-    fi
 
     local -a missing_formulae=()
     local -a desired_formulae=(
-      'alfred'
-      'dash'
-      'dashlane'
       'dropbox'
       'firefox'
-      'franz'
       'google-chrome'
-      # 'google-drive'
+      'google-backup-and-sync'
       'skitch'
-      'vagrant'
-      'virtualbox'
+      '1password'
       'visual-studio-code'
       'xquartz'
     )
     # cask
-    local installed=`brew cask list`
+    local installed=`brew list --cask`
 
     for index in ${!desired_formulae[*]}
     do
@@ -131,13 +115,11 @@ run_brew() {
       fi
     done
 
-    pod setup
-
     if [[ "$missing_formulae" ]]; then
       list_formulae=$( printf "%s " "${missing_formulae[@]}" )
 
       echo "Installing missing Homebrew formulae..."
-      brew cask install $list_formulae
+      brew install --cask $list_formulae
 
       [[ $? ]] && echo "$(tput setaf 2)Installed missing formulae ✔︎$(tput sgr0)"
     fi
