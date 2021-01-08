@@ -87,6 +87,7 @@ initialize() {
       exit 1 ;;
   esac
 
+  [ ! -d ${HOME}/.zinit ] && sh -c "$(curl -fsSL https://raw.githubusercontent.com/zdharma/zinit/master/doc/install.sh)"
   [ ${SHELL} != "/bin/zsh"  ] && chsh -s /bin/zsh
 
   if [ ! -d ${HOME}/.anyenv ]; then
@@ -102,8 +103,6 @@ initialize() {
   run_go
   run_yarn
 
-  [ ! -d ${HOME}/.zplugin ] && sh -c "$(curl -fsSL https://raw.githubusercontent.com/zdharma/zplugin/master/doc/install.sh)"
-  [ ! -d ${HOME}/.tmux/plugins/tpm ] && git clone https://github.com/tmux-plugins/tpm ${HOME}/.tmux/plugins/tpm
   ghq get -u flutter/flutter.git
   flutter doctor
 

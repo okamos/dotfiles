@@ -129,9 +129,9 @@ function google() {
 [ -f ~/.zshrc.local ] && source ~/.zshrc.local
 [ -f "${GHCUP_INSTALL_BASE_PREFIX:=$HOME}/.ghcup/env" ] && source "${GHCUP_INSTALL_BASE_PREFIX:=$HOME}/.ghcup/env"
 
-source '/Users/okamos/.zplugin/bin/zplugin.zsh'
-autoload -Uz _zplugin
-(( ${+_comps} )) && _comps[zplugin]=_zplugin
-zplugin light zsh-users/zsh-autosuggestions
-zplugin light zdharma/fast-syntax-highlighting
-zplugin light greymd/tmux-xpanes
+[ -d ~/.zinit ] && source ~/.zinit/bin/zinit.zsh
+zinit light zsh-users/zsh-autosuggestions
+zinit light zdharma/fast-syntax-highlighting
+zinit light greymd/tmux-xpanes
+zinit light paulirish/git-open
+autoload bashcompinit && bashcompinit
