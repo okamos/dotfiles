@@ -58,7 +58,7 @@ cd ${DOT_DIRECTORY}
 source ./lib/brew
 source ./lib/go
 source ./lib/apt-get
-source ./lib/yarn
+source ./lib/node
 
 link_files() {
   for f in .??*
@@ -101,7 +101,7 @@ initialize() {
   fi
 
   run_go
-  run_yarn
+  run_node
 
   ghq get -u flutter/flutter.git
   flutter doctor

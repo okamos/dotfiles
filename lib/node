@@ -1,0 +1,23 @@
+#!/bin/bash
+run_node() {
+  if has "npm"; then
+    echo "Install npm packages..."
+
+    npm install -g \
+      node-gyp \
+      coffeescript \
+      eslint \
+      http-server \
+      node-google-apps-script \
+      prettier \
+      tern \
+      tldr \
+      tslint \
+      typescript \
+      typings \
+      uglify-js \
+      uglifycss
+
+    echo "$(tput setaf 2)Install npm packages complete. ✔︎$(tput sgr0)"
+  fi
+}
