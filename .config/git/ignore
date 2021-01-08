@@ -8,3 +8,4 @@ log
 
 .tern-project
 .tern-port
+.envrc
