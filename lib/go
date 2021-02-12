@@ -5,6 +5,7 @@ run_go() {
 
     go get -u github.com/motemen/ghq
     go get -u golang.org/x/tools/gopls
+    go get -u golang.org/x/tools/cmd/goimports
 
     if [[ $OSTYPE =~ "linux" ]]; then
       cd $HOME/dev/src/github.com/peco/peco
