@@ -16,6 +16,7 @@ call plug#begin(s:plug_dir)
 
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-fugitive'
+Plug 'will133/vim-dirdiff'
 Plug 'tpope/vim-commentary'
 Plug 'junegunn/seoul256.vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
@@ -27,11 +28,7 @@ Plug 'previm/previm'
 Plug 'plasticboy/vim-markdown'
 Plug 'tyru/open-browser.vim'
 
-Plug 'othree/yajs.vim', { 'for': ['javascript'] }
-Plug 'posva/vim-vue', { 'for': ['vue'] }
-Plug 'peitalin/vim-jsx-typescript', { 'for': ['typescript', 'typescriptreact'] }
-Plug 'hashivim/vim-terraform' 
-Plug 'rust-lang/rust.vim', { 'for': 'rust' }
+Plug 'sheerun/vim-polyglot'
 Plug 'mattn/emmet-vim', { 'for': ['eruby', 'html', 'gohtmltmpl', 'vue'], 'on': [] }
 
 Plug 'honza/vim-snippets', { 'on': [] }
@@ -99,7 +96,7 @@ vmap ga <Plug>(EasyAlign)
 nmap ga <Plug>(EasyAlign)
 
 " ultisnips
-let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsExpandTrigger="<f5>"
 let g:UltiSnipsJumpForwardTrigger="<c-b>"
 let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 let g:UltiSnipsEditSplit="vertical"
