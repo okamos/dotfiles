@@ -101,12 +101,13 @@ export PATH=$PATH:$XDG_CONFIG_HOME/yarn/global/node_modules/.bin
 export PATH=$PATH:$XDG_CONFIG_HOME/composer/vendor/bin
 export PATH=$PATH:$HOME/.cargo/bin
 [ -f ~/.travis/travis.sh ] && source ~/.travis/travis.sh
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '~/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/okamoto_shinichi/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '~/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/okamoto_shinichi/google-cloud-sdk/completion.zsh.inc'; fi
 
 fpath=(/usr/local/share/zsh/site-functions $fpath)
-if [ -d ~/dev/google-cloud-sdk ]; then
-  source /Users/okamos/dev/google-cloud-sdk/completion.zsh.inc
-  source /Users/okamos/dev/google-cloud-sdk/path.zsh.inc
-fi
 autoload -Uz add-zsh-hock
 autoload -Uz chpwd_recent_dirs cdr add-zsh-hook
 autoload -Uz zmv
@@ -131,7 +132,9 @@ function google() {
 
 [ -d ~/.zinit ] && source ~/.zinit/bin/zinit.zsh
 zinit light zsh-users/zsh-autosuggestions
+zinit light zsh-users/zsh-completions
 zinit light zdharma/fast-syntax-highlighting
 zinit light greymd/tmux-xpanes
 zinit light paulirish/git-open
 autoload bashcompinit && bashcompinit
+

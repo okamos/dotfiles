@@ -49,7 +49,6 @@ run_brew() {
       'neovim'
       'openssl'
       'packer'
-      'peco'
       'postgresql'
       'qt'
       'sqlite'
