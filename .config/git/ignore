@@ -6,6 +6,7 @@ temp
 tmp
 log
 
+.terraform
 .tern-project
 .tern-port
 .envrc
