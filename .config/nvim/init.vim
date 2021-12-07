@@ -16,10 +16,9 @@ call plug#begin(s:plug_dir)
 
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-fugitive'
-Plug 'will133/vim-dirdiff'
 Plug 'tpope/vim-commentary'
 Plug 'junegunn/seoul256.vim'
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/vim-easy-align', { 'on': ['EasyAlign', '<Plug>(EasyAlign)'] }
 
@@ -32,7 +31,7 @@ Plug 'sheerun/vim-polyglot'
 Plug 'mattn/emmet-vim', { 'for': ['eruby', 'html', 'gohtmltmpl', 'vue'], 'on': [] }
 
 Plug 'honza/vim-snippets', { 'on': [] }
-Plug 'SirVer/ultisnips', { 'on': [] }
+"Plug 'SirVer/ultisnips', { 'on': [] }
 
 Plug 'tidalcycles/vim-tidal'
 
@@ -61,12 +60,12 @@ let g:python_host_prog = expand('~/.anyenv/envs/pyenv/versions/neovim2/bin/pytho
 let g:python3_host_prog = expand('~/.anyenv/envs/pyenv/versions/neovim3/bin/python')
 
 " plugin data directories {{{
-let g:ctrlp_cache_dir          = expand($XDG_CACHE_HOME . '/nvim/ctrlp')
 let g:memolist_path                 = expand('~/GoogleDrive/memolist')
 " }}}
 
 " plugins {{{
 " fzf
+set rtp+=/Users/okamoto_shinichi/.asdf/installs/fzf/0.28.0
 function! s:find_git_root()
   return system('git rev-parse --show-toplevel 2> /dev/null')[:-2]
 endfunction

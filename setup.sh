@@ -56,6 +56,7 @@ fi
 
 cd ${DOT_DIRECTORY}
 source ./lib/brew
+source ./lib/asdf
 source ./lib/go
 source ./lib/apt-get
 source ./lib/node
@@ -90,27 +91,14 @@ initialize() {
   [ ! -d ${HOME}/.zinit ] && sh -c "$(curl -fsSL https://raw.githubusercontent.com/zdharma/zinit/master/doc/install.sh)"
   [ ${SHELL} != "/bin/zsh"  ] && chsh -s /bin/zsh
 
-  if [ ! -d ${HOME}/.anyenv ]; then
-    anyenv init
-    anyenv install tfenv
-    anyenv install nodenv
-    exec $SHELL -l
-  fi
-
+  set +e
+  run_asdf
   run_go
   run_node
+  set -e
 
   ghq get -u flutter/flutter.git
   flutter doctor
-
-  set +e
-  if has "rbenv"; then
-    [ ! -d $(rbenv root)/plugins/rbenv-default-gems ] && git clone -q https://github.com/rbenv/rbenv-default-gems.git $(rbenv root)/plugins/rbenv-default-gems
-    [ ! -e $(rbenv root)/default-gems ] && cp ${DOT_DIRECTORY}/default-gems $(rbenv root)/default-gems
-  fi
-  if [ ! -d $HOME/.cargo ]; then
-    curl https://sh.rustup.rs -sSf | sh -s -- -y
-  fi
 
   if [ ! -f ${HOME}/Library/Fonts/Cica-Regular.ttf ]; then
     cd ${HOME}

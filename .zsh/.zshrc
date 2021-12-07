@@ -36,8 +36,8 @@ unsetopt caseglob
 
 ### History ###
 export HISTFILE=~/.zsh_history
-export HISTSIZE=10000
-export SAVEHIST=10000
+export HISTSIZE=100000
+export SAVEHIST=100000
 setopt bang_hist          # !を使ったヒストリ展開を行う(d)
 setopt extended_history
 setopt hist_ignore_dups
@@ -84,14 +84,9 @@ case "${OSTYPE}" in
   ;;
 esac
 
-export PATH=/usr/local/opt/gettext/bin:$PATH
 export PATH=$HOME/dev/github.com/flutter/flutter/bin:$PATH
 export PATH="$HOME/dev/bin:$PATH"
 
-if [ -d ~/.anyenv ]; then
-  export PATH=$HOME/.anyenv/bin:$PATH
-  eval "$(anyenv init - --no-rehash)"
-fi
 if has "direnv"; then
   eval "$(direnv hook zsh)"
 fi
@@ -101,11 +96,6 @@ export PATH=$PATH:$XDG_CONFIG_HOME/yarn/global/node_modules/.bin
 export PATH=$PATH:$XDG_CONFIG_HOME/composer/vendor/bin
 export PATH=$PATH:$HOME/.cargo/bin
 [ -f ~/.travis/travis.sh ] && source ~/.travis/travis.sh
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f '~/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/okamoto_shinichi/google-cloud-sdk/path.zsh.inc'; fi
-
-# The next line enables shell command completion for gcloud.
-if [ -f '~/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/okamoto_shinichi/google-cloud-sdk/completion.zsh.inc'; fi
 
 fpath=(/usr/local/share/zsh/site-functions $fpath)
 autoload -Uz add-zsh-hock
@@ -126,10 +116,9 @@ function google() {
     w3m http://www.google.co.jp/$opt
 }
 
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-[ -f ~/.zshrc.local ] && source ~/.zshrc.local
 [ -f "${GHCUP_INSTALL_BASE_PREFIX:=$HOME}/.ghcup/env" ] && source "${GHCUP_INSTALL_BASE_PREFIX:=$HOME}/.ghcup/env"
 
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 [ -d ~/.zinit ] && source ~/.zinit/bin/zinit.zsh
 zinit light zsh-users/zsh-autosuggestions
 zinit light zsh-users/zsh-completions
@@ -137,4 +126,4 @@ zinit light zdharma/fast-syntax-highlighting
 zinit light greymd/tmux-xpanes
 zinit light paulirish/git-open
 autoload bashcompinit && bashcompinit
-
+. /usr/local/opt/asdf/libexec/asdf.sh

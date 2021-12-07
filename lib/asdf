@@ -1,0 +1,56 @@
+#!/bin/bash
+run_asdf() {
+  if has "asdf"; then
+    # see https://github.com/asdf-vm/asdf-plugins
+    local -a plugins=(
+      '1password-cli'
+      'ansible-base'
+      'argocd'
+      'aws-iam-authenticator'
+      'awscli'
+      'aws-vault'
+      'deno'
+      'direnv'
+      'eksctl'
+      'fzf'
+      'gcloud'
+      'ghq'
+      'git'
+      'golang'
+      'helm'
+      'helmfile'
+      'jq'
+      'kubectl'
+      'kubectx'
+      'kustomize'
+      'mongo-tools'
+      'mysql'
+      'neovim'
+      'nodejs'
+      'packer'
+      'php'
+      'postgres'
+      'python'
+      'ruby'
+      'rust'
+      'terraform'
+      'tmux'
+      'trivy'
+      'yarn'
+    )
+
+    for index in ${!plugins[*]}
+    do
+      local plugin=`echo ${plugins[$index]} | cut -d' ' -f 1`
+      asdf plugin add ${plugin}
+      if [ $? -eq 2 ]; then
+        continue
+      fi
+
+      asdf install ${plugin} latest
+      asdf global ${plugin} latest
+    done
+
+    echo "$(tput setaf 2)Install asdf plugins complete. ✔︎$(tput sgr0)"
+  fi
+}
