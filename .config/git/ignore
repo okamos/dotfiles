@@ -9,4 +9,5 @@ log
 .terraform
 .tern-project
 .tern-port
+.tool-versions
 .envrc

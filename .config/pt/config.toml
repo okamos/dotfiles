@@ -1,4 +1,4 @@
 smart-case = true
 hidden = true
 vcs-ignore = ['.gitignore','.git/info/exclude']
-ignore = ['.git']
+ignore = ['.git', '.terraform', 'KSIR-*']

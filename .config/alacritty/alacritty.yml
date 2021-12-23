@@ -651,5 +651,5 @@ key_bindings:
   - { key: Yen,      mods: Alt,       chars: "\x4C"                              }
 
 # customize
-  - { key: LBracket, mods: Control, chars: "\x9b" }
+  - { key: LBracket, mods: Control, chars: "\x1b" }
   - { key: RBracket, mods: Control, chars: "\x9d" }
