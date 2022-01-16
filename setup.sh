@@ -2,7 +2,7 @@
 set -e
 OS="$(uname -s)"
 DOT_DIRECTORY="${HOME}/dotfiles"
-DOT_TARBALL="https://github.com/okamos/dotfiles/tarball/master"
+DOT_TARBALL="https://github.com/okamos/dotfiles/tarball/main"
 REMOTE_URL="git@github.com:okamos/dotfiles.git"
 
 has() {
@@ -88,7 +88,7 @@ initialize() {
       exit 1 ;;
   esac
 
-  [ ! -d ${HOME}/.zinit ] && sh -c "$(curl -fsSL https://raw.githubusercontent.com/zdharma/zinit/master/doc/install.sh)"
+  [ ! -d ${HOME}/.zinit ] && sh -c "$(curl -fsSL https://git.io/zinit-install)"
   [ ${SHELL} != "/bin/zsh"  ] && chsh -s /bin/zsh
 
   set +e
