@@ -86,16 +86,8 @@ esac
 
 export PATH=$HOME/dev/github.com/flutter/flutter/bin:$PATH
 export PATH="$HOME/dev/bin:$PATH"
-
-if has "direnv"; then
-  eval "$(direnv hook zsh)"
-fi
 export PATH=$PATH:$HOME/go/bin
-export PATH=$PATH:$HOME/maven/bin
-export PATH=$PATH:$XDG_CONFIG_HOME/yarn/global/node_modules/.bin
 export PATH=$PATH:$XDG_CONFIG_HOME/composer/vendor/bin
-export PATH=$PATH:$HOME/.cargo/bin
-[ -f ~/.travis/travis.sh ] && source ~/.travis/travis.sh
 
 fpath=(/usr/local/share/zsh/site-functions $fpath)
 autoload -Uz add-zsh-hock
@@ -116,14 +108,28 @@ function google() {
     w3m http://www.google.co.jp/$opt
 }
 
-[ -f "${GHCUP_INSTALL_BASE_PREFIX:=$HOME}/.ghcup/env" ] && source "${GHCUP_INSTALL_BASE_PREFIX:=$HOME}/.ghcup/env"
-
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-[ -d ~/.zinit ] && source ~/.zinit/bin/zinit.zsh
+. /opt/homebrew/opt/asdf/libexec/asdf.sh
+eval "$(env ASDF_DIRENV_VERSION=2.29.0 asdf direnv hook zsh)"
+direnv() { env ASDF_DIRENV_VERSION=2.29.0 asdf direnv "$@"; }
+eval "$(/opt/homebrew/bin/brew shellenv)"
+
+### Added by Zinit's installer
+if [[ ! -f $HOME/.local/share/zinit/zinit.git/zinit.zsh ]]; then
+    print -P "%F{33} %F{220}Installing %F{33}ZDHARMA-CONTINUUM%F{220} Initiative Plugin Manager (%F{33}zdharma-continuum/zinit%F{220})…%f"
+    command mkdir -p "$HOME/.local/share/zinit" && command chmod g-rwX "$HOME/.local/share/zinit"
+    command git clone https://github.com/zdharma-continuum/zinit "$HOME/.local/share/zinit/zinit.git" && \
+        print -P "%F{33} %F{34}Installation successful.%f%b" || \
+        print -P "%F{160} The clone has failed.%f%b"
+fi
+
+source "$HOME/.local/share/zinit/zinit.git/zinit.zsh"
+autoload -Uz _zinit
+(( ${+_comps} )) && _comps[zinit]=_zinit
+
 zinit light zsh-users/zsh-autosuggestions
 zinit light zsh-users/zsh-completions
-zinit light zdharma/fast-syntax-highlighting
+zinit light zsh-users/zsh-syntax-highlighting
 zinit light greymd/tmux-xpanes
 zinit light paulirish/git-open
 autoload bashcompinit && bashcompinit
-. /usr/local/opt/asdf/libexec/asdf.sh

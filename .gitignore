@@ -4,15 +4,18 @@
 
 .bundle/cache
 .config/*
+.zsh
 
 # whitelist
 !.config/nvim
 !.config/pt
 !.config/git
 !.config/composer
+!.config/yarn
+!.config/alacritty
+!.zsh/.zshrc
+
 .config/composer/vendor
 .config/composer/auth.json
-!.config/yarn
 .config/yarn/link
 .config/yarn/global/node_modules
-!.config/alacritty

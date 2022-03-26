@@ -1,13 +1,16 @@
 .python-version
 
 .git
+.gitallowed
 cache
 temp
 tmp
 log
 
 .terraform
+.tool-versions
 .tern-project
 .tern-port
 .tool-versions
 .envrc
+.vault_password
