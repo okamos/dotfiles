@@ -69,12 +69,14 @@ set rtp+=/Users/okamoto_shinichi/.asdf/installs/fzf/0.28.0
 function! s:find_git_root()
   return system('git rev-parse --show-toplevel 2> /dev/null')[:-2]
 endfunction
-command! -bang -nargs=* GGrep
-  \ call fzf#vim#grep(
-  \   'pt --column --ignore=.git --global-gitignore '.shellescape(<q-args>), 1,
-  \   <bang>0 ? fzf#vim#with_preview('up:60%')
-  \           : fzf#vim#with_preview({ 'dir': s:find_git_root() }),
-  \   <bang>0)
+function! RipgrepFzf(query, fullscreen)
+  let command_fmt = 'rg --column --line-number --no-heading --color=always --smart-case -- %s || true'
+  let initial_command = printf(command_fmt, shellescape(a:query))
+  let reload_command = printf(command_fmt, '{q}')
+  let spec = {'options': ['--phony', '--query', a:query, '--bind', 'change:reload:'.reload_command]}
+  call fzf#vim#grep(initial_command, 1, fzf#vim#with_preview(spec), a:fullscreen)
+endfunction
+command! -nargs=* -bang RG call RipgrepFzf(<q-args>, <bang>0)
 let g:fzf_history_dir = '~/.cache/nvim/fzf-history'
 
 " memolist

@@ -38,6 +38,7 @@ run_brew() {
       'nkf'
       'openssl'
       'qt'
+      'ripgrep'
       'scrcpy'
       'sqlite'
       'svn'
