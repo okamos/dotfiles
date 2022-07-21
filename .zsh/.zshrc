@@ -84,6 +84,7 @@ case "${OSTYPE}" in
   ;;
 esac
 
+export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 export PATH=$HOME/dev/github.com/flutter/flutter/bin:$PATH
 export PATH="$HOME/dev/bin:$PATH"
 export PATH=$PATH:$HOME/go/bin
@@ -109,10 +110,12 @@ function google() {
 }
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-. /opt/homebrew/opt/asdf/libexec/asdf.sh
-eval "$(env ASDF_DIRENV_VERSION=2.29.0 asdf direnv hook zsh)"
-direnv() { env ASDF_DIRENV_VERSION=2.29.0 asdf direnv "$@"; }
 eval "$(/opt/homebrew/bin/brew shellenv)"
+. $(brew --prefix asdf)/libexec/asdf.sh
+
+# Created by `pipx` on 2022-03-30 08:38:37
+export PATH="$PATH:/Users/okamoto_shinichi/.local/bin"
+source ${XDG_CONFIG_HOME:-$HOME/.config}/asdf-direnv/zshrc
 
 ### Added by Zinit's installer
 if [[ ! -f $HOME/.local/share/zinit/zinit.git/zinit.zsh ]]; then

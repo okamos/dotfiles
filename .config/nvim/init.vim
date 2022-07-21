@@ -31,12 +31,9 @@ Plug 'sheerun/vim-polyglot'
 Plug 'mattn/emmet-vim', { 'for': ['eruby', 'html', 'gohtmltmpl', 'vue'], 'on': [] }
 
 Plug 'honza/vim-snippets', { 'on': [] }
-"Plug 'SirVer/ultisnips', { 'on': [] }
 
 Plug 'tidalcycles/vim-tidal'
 
-Plug 'w0rp/ale'
-Plug 'prabirshrestha/async.vim'
 Plug 'prabirshrestha/asyncomplete.vim'
 Plug 'prabirshrestha/asyncomplete-lsp.vim'
 Plug 'prabirshrestha/vim-lsp'
@@ -60,12 +57,11 @@ let g:python_host_prog = expand('~/.anyenv/envs/pyenv/versions/neovim2/bin/pytho
 let g:python3_host_prog = expand('~/.anyenv/envs/pyenv/versions/neovim3/bin/python')
 
 " plugin data directories {{{
-let g:memolist_path                 = expand('~/GoogleDrive/memolist')
+let g:memolist_path                 = '/Volumes/GoogleDrive'
 " }}}
 
 " plugins {{{
 " fzf
-set rtp+=/Users/okamoto_shinichi/.asdf/installs/fzf/0.28.0
 function! s:find_git_root()
   return system('git rev-parse --show-toplevel 2> /dev/null')[:-2]
 endfunction
@@ -109,18 +105,6 @@ let g:terraform_fmt_on_save=1
 " rust
 let g:rustfmt_autosave = 1
 
-" ale
-let g:ale_linters = {
-  \ 'html': [],
-  \ 'css': ['stylelint'],
-  \ 'javascript': ['eslint'],
-  \ 'vue': ['eslint']
-  \ }
-let g:ale_linter_aliases = {'vue': 'css'}
-let g:ale_fixers = {
-  \ 'ruby': ['rubocop']
-  \ }
-
 " lsp
 function! s:on_lsp_buffer_enabled() abort
   setlocal omnifunc=lsp#complete
@@ -136,10 +120,10 @@ function! s:on_lsp_buffer_enabled() abort
   nmap <buffer> K <plug>(lsp-hover)
 endfunction
 
-augroup lsp_install
-    au!
-    " call s:on_lsp_buffer_enabled only for languages that has the server registered.
-    autocmd User lsp_buffer_enabled call s:on_lsp_buffer_enabled()
+ augroup lsp_install
+     au!
+     " call s:on_lsp_buffer_enabled only for languages that has the server registered.
+     autocmd User lsp_buffer_enabled call s:on_lsp_buffer_enabled()
 augroup END
 
 " asyncomplete
@@ -148,6 +132,7 @@ let g:lsp_diagnostics_echo_cursor = 1
 let g:asyncomplete_popup_delay = 200
 let g:lsp_text_edit_enabled = 0
 " goimports
+let g:goimports = 1
 let g:goimports_simplify = 1
 " }}}
 
