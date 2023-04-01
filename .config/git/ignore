@@ -8,6 +8,7 @@ tmp
 log
 
 .terraform
+.terraform.lock.hcl
 .tool-versions
 .tern-project
 .tern-port

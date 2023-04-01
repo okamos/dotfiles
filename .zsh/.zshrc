@@ -87,7 +87,6 @@ esac
 export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 export PATH=$HOME/dev/github.com/flutter/flutter/bin:$PATH
 export PATH="$HOME/dev/bin:$PATH"
-export PATH=$PATH:$HOME/go/bin
 export PATH=$PATH:$XDG_CONFIG_HOME/composer/vendor/bin
 
 fpath=(/usr/local/share/zsh/site-functions $fpath)

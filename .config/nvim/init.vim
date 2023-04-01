@@ -34,11 +34,13 @@ Plug 'honza/vim-snippets', { 'on': [] }
 
 Plug 'tidalcycles/vim-tidal'
 
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'prabirshrestha/asyncomplete.vim'
 Plug 'prabirshrestha/asyncomplete-lsp.vim'
 Plug 'prabirshrestha/vim-lsp'
 Plug 'mattn/vim-lsp-settings'
 Plug 'mattn/vim-goimports'
+Plug 'github/copilot.vim'
 
 call plug#end()
 
@@ -178,15 +180,14 @@ set timeoutlen=500
 set ttimeout
 set ttimeoutlen=50
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip
+set isk+=-
 
 "etc
 set nf=hex
 set mouse=a
 
-"key-mapping
+" key-mapping
 nmap <Esc><Esc> :nohlsearch<CR><Esc>
-nmap <Tab> %
-vmap <Tab> %
 map silent <C-n> :cnext<CR>
 map silent <C-m> :cprevious<CR>
 nnoremap <leader>a :cclose<CR>
@@ -204,11 +205,15 @@ function! s:setFileType()
     set ft=html
   endif
 endfunction
-augroup vueBinds
-  au!
-  au User *.vue call s:setFileType()
-augroup END
+" augroup vueBinds
+"   au!
+"   au User *.vue call s:setFileType()
+" augroup END
 nmap <silent> tu :doautocmd User<CR>
+imap <silent><script><expr> <C-j> copilot#Accept("\<CR>")
+let g:copilot_no_tab_map = v:true
+imap <silent> <C-i> <Plug>(copilot-previous)
+imap <silent> <C-k> <Plug>(copilot-next)
 " }}}
 
 highlight Normal ctermbg=NONE guibg=NONE
@@ -216,3 +221,12 @@ highlight NonText ctermbg=NONE guibg=NONE
 highlight LineNr ctermbg=NONE guibg=NONE
 highlight Folded ctermbg=NONE guibg=NONE
 highlight EndOfBuffer ctermbg=NONE guibg=NONE
+
+lua <<EOF
+require'nvim-treesitter.configs'.setup {
+  highlight = {
+    enable = true,
+    disable = {},
+  },
+}
+EOF
