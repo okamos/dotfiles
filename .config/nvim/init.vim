@@ -22,7 +22,6 @@ Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/vim-easy-align', { 'on': ['EasyAlign', '<Plug>(EasyAlign)'] }
 
-Plug 'glidenote/memolist.vim'
 Plug 'previm/previm'
 Plug 'plasticboy/vim-markdown'
 Plug 'tyru/open-browser.vim'
@@ -71,12 +70,6 @@ function! RipgrepFzf(query, fullscreen)
 endfunction
 command! -nargs=* -bang RG call RipgrepFzf(<q-args>, <bang>0)
 let g:fzf_history_dir = '~/.cache/nvim/fzf-history'
-
-" memolist
-let g:memolist_gfixgrep             = 1
-let g:memolist_filename_prefix_none = 1
-nmap mn  :MemoNew<CR>
-nmap mg  :MemoGrep<CR>
 
 " previm
 let g:previm_show_header = 0
