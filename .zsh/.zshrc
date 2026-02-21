@@ -82,8 +82,7 @@ has() {
 
 case "${OSTYPE}" in
   darwin*|linux-gnu)
-    export PATH=./vendor/bin:/usr/local/bin:/opt/local/bin:/opt/local/sbin:$PATH
-    export MANPATH=/opt/local/share/man:/opt/local/man:$MANPATH
+    export PATH=./vendor/bin:$PATH
   ;;
 esac
 
@@ -91,9 +90,11 @@ export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 export PATH=$HOME/dev/github.com/flutter/flutter/bin:$PATH
 export PATH="$HOME/dev/bin:$PATH"
 export PATH=$PATH:$XDG_CONFIG_HOME/composer/vendor/bin
-export PATH=$PATH:$HOME/Downloads/ghidra-Ghidra_10.3.2_build/bin
+# Ghidra (use latest version found in ~/Downloads)
+ghidra_dir=$(ls -dt ~/Downloads/ghidra*/bin 2>/dev/null | head -1)
+[ -n "$ghidra_dir" ] && export PATH=$PATH:$ghidra_dir
 
-fpath=(/usr/local/share/zsh/site-functions $fpath)
+fpath=($(brew --prefix)/share/zsh/site-functions $fpath)
 autoload -Uz add-zsh-hock
 autoload -Uz chpwd_recent_dirs cdr add-zsh-hook
 autoload -Uz zmv
@@ -116,7 +117,7 @@ function google() {
 eval "$(/opt/homebrew/bin/brew shellenv)"
 eval "$(mise activate zsh)"
 
-export PATH="$PATH:/Users/okamoto_shinichi/.local/bin"
+export PATH="$PATH:$HOME/.local/bin"
 
 ### Added by Zinit's installer
 if [[ ! -f $HOME/.local/share/zinit/zinit.git/zinit.zsh ]]; then
