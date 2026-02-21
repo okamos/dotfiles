@@ -13,9 +13,11 @@
 !.config/composer
 !.config/yarn
 !.config/alacritty
+!.config/mcp
 !.zsh/.zshrc
 
 .config/composer/vendor
 .config/composer/auth.json
 .config/yarn/link
 .config/yarn/global/node_modules
+.config/mcp/gcp-oauth.keys.json
