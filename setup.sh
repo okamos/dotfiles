@@ -70,9 +70,14 @@ link_files() {
       # If you have ignore files, add file/directory name here
       [[ ${f} = ".git" ]] && continue
       [[ ${f} = ".gitignore" ]] && continue
+      [[ ${f} = ".claude" ]] && continue
       ln -snfv ${DOT_DIRECTORY}/${f} ${HOME}/${f}
     fi
   done
+
+  # Link individual files from directories that have their own runtime data
+  mkdir -p ${HOME}/.claude
+  ln -snfv ${DOT_DIRECTORY}/.claude/CLAUDE.md ${HOME}/.claude/CLAUDE.md
 
   echo $(tput setaf 2)Deploy dotfiles complete!. ✔︎$(tput sgr0)
 }
