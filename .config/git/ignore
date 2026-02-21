@@ -9,9 +9,12 @@ log
 
 .terraform
 .terraform.lock.hcl
+.terragrunt-cache
 .tool-versions
 .tern-project
 .tern-port
 .tool-versions
 .envrc
 .vault_password
+
+**/.claude/settings.local.json

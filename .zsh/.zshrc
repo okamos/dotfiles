@@ -1,3 +1,5 @@
+# Kiro CLI pre block. Keep at the top of this file.
+[[ -f "${HOME}/Library/Application Support/kiro-cli/shell/zshrc.pre.zsh" ]] && builtin source "${HOME}/Library/Application Support/kiro-cli/shell/zshrc.pre.zsh"
 # ------------------------------
 # General Settings
 # ------------------------------
@@ -10,6 +12,7 @@ export XDG_CONFIG_HOME=$HOME/.config
 export XDG_CACHE_HOME=$HOME/.cache
 export XDG_DATA_HOME=$HOME/.local/share
 export TERM=screen-256color
+export CW_TERM=0.15.4
 
 bindkey -e
 
@@ -88,6 +91,7 @@ export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 export PATH=$HOME/dev/github.com/flutter/flutter/bin:$PATH
 export PATH="$HOME/dev/bin:$PATH"
 export PATH=$PATH:$XDG_CONFIG_HOME/composer/vendor/bin
+export PATH=$PATH:$HOME/Downloads/ghidra-Ghidra_10.3.2_build/bin
 
 fpath=(/usr/local/share/zsh/site-functions $fpath)
 autoload -Uz add-zsh-hock
@@ -110,11 +114,9 @@ function google() {
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 eval "$(/opt/homebrew/bin/brew shellenv)"
-. $(brew --prefix asdf)/libexec/asdf.sh
+eval "$(mise activate zsh)"
 
-# Created by `pipx` on 2022-03-30 08:38:37
 export PATH="$PATH:/Users/okamoto_shinichi/.local/bin"
-source ${XDG_CONFIG_HOME:-$HOME/.config}/asdf-direnv/zshrc
 
 ### Added by Zinit's installer
 if [[ ! -f $HOME/.local/share/zinit/zinit.git/zinit.zsh ]]; then
@@ -135,3 +137,6 @@ zinit light zsh-users/zsh-syntax-highlighting
 zinit light greymd/tmux-xpanes
 zinit light paulirish/git-open
 autoload bashcompinit && bashcompinit
+
+# Kiro CLI post block. Keep at the bottom of this file.
+[[ -f "${HOME}/Library/Application Support/kiro-cli/shell/zshrc.post.zsh" ]] && builtin source "${HOME}/Library/Application Support/kiro-cli/shell/zshrc.post.zsh"

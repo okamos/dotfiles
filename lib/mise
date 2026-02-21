@@ -1,0 +1,46 @@
+#!/bin/bash
+run_mise() {
+  if has "mise"; then
+    local -a tools=(
+      'ansible'
+      'argocd'
+      'aws-iam-authenticator'
+      'aws-sam-cli'
+      'aws-vault'
+      'awscli'
+      'deno'
+      'eksctl'
+      'fzf'
+      'gcloud'
+      'ghq'
+      'github-cli'
+      'golang'
+      'helm'
+      'helmfile'
+      'java'
+      'jq'
+      'krew'
+      'kubectl'
+      'neovim'
+      'nodejs'
+      'packer'
+      'pipx'
+      'python'
+      'ruby'
+      'rust'
+      'sops'
+      'terraform'
+      'terragrunt'
+      'tmux'
+      'trivy'
+      'uv'
+    )
+
+    for tool in "${tools[@]}"
+    do
+      mise use --global "${tool}@latest"
+    done
+
+    echo "$(tput setaf 2)Install mise tools complete. ✔︎$(tput sgr0)"
+  fi
+}

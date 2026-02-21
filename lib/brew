@@ -17,9 +17,9 @@ run_brew() {
     local -a desired_formulae=(
       # 'ab'
       'asdf'
+      'mise'
       'autoconf'
       'automake'
-      'android-sdk'
       'asciinema'
       'cocoapods'
       'composer'
@@ -35,12 +35,9 @@ run_brew() {
       'ios-deploy'
       'iproute2mac'
       'libimobiledevice'
-      'navi'
       'nkf'
       'openssl'
-      'qt'
       'ripgrep'
-      'scrcpy'
       'sqlite'
       'svn'
       'unar'
@@ -48,7 +45,6 @@ run_brew() {
       'tree'
       'w3m'
       'wget'
-      'youtube-dl'
       'zsh'
     )
 
@@ -73,9 +69,6 @@ run_brew() {
       [[ $? ]] && echo "$(tput setaf 2)Installed missing formulae ✔︎$(tput sgr0)"
     fi
 
-    ln -sfv /usr/local/opt/mysql/*.plist ~/Library/LaunchAgents
-    ln -sfv /usr/local/opt/postgresql/*.plist ~/Library/LaunchAgents
-
     local -a missing_formulae=()
     local -a desired_formulae=(
       'dropbox'
@@ -85,6 +78,7 @@ run_brew() {
       '1password'
       'visual-studio-code'
       'xquartz'
+      'font-udev-gothic-nf'
     )
     # cask
     local installed=`brew list --cask`

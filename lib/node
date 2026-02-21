@@ -4,15 +4,17 @@ run_node() {
     echo "Install npm packages..."
 
     npm install -g \
-      node-gyp \
-      coffeescript \
       eslint \
+      github-copilot-cli \
       http-server \
       node-google-apps-script \
       prettier \
+      pretty-js \
       tern \
       tldr \
+      tldr \
       tslint \
+      tsserver \
       typescript \
       typings \
       uglify-js \

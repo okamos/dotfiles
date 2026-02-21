@@ -57,9 +57,9 @@ fi
 cd ${DOT_DIRECTORY}
 source ./lib/brew
 source ./lib/asdf
+source ./lib/mise
 source ./lib/go
 source ./lib/apt-get
-source ./lib/node
 
 link_files() {
   for f in .??*
@@ -92,22 +92,12 @@ initialize() {
   [ ${SHELL} != "/bin/zsh"  ] && chsh -s /bin/zsh
 
   set +e
-  run_asdf
+  run_mise
   run_go
-  run_node
   set -e
 
   ghq get -u flutter/flutter.git
   flutter doctor
-
-  if [ ! -f ${HOME}/Library/Fonts/Cica-Regular.ttf ]; then
-    cd ${HOME}
-    git clone https://github.com/miiton/Cica.git
-    cd Cica
-    docker-compose build ; docker-compose run --rm cica
-    cp dist/*.ttf ${HOME}/Library/Fonts/
-    fc-cache -vf
-  fi
 
   echo "$(tput setaf 2)Initialize complete!. ✔︎$(tput sgr0)"
 }

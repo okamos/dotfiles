@@ -1,0 +1,5 @@
+@aws-amplify/cli
+eslint
+http-server
+prettier
+typescript

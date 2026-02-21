@@ -89,6 +89,7 @@ let g:previm_show_header = 0
 " open-browser
 let g:netrw_nogx = 1 " disable netrw's gx mapping.
 nmap gx <Plug>(openbrowser-smart-search)
+autocmd FileType markdown nmap <buffer> gx <Plug>(openbrowser-smart-search)
 
 " easy-align
 vmap ga <Plug>(EasyAlign)
@@ -211,9 +212,9 @@ endfunction
 " augroup END
 nmap <silent> tu :doautocmd User<CR>
 imap <silent><script><expr> <C-j> copilot#Accept("\<CR>")
-let g:copilot_no_tab_map = v:true
-imap <silent> <C-i> <Plug>(copilot-previous)
-imap <silent> <C-k> <Plug>(copilot-next)
+" let g:copilot_no_tab_map = v:true
+" imap <silent> <C-i> <Plug>(copilot-previous)
+" imap <silent> <C-k> <Plug>(copilot-next)
 " }}}
 
 highlight Normal ctermbg=NONE guibg=NONE
@@ -222,11 +223,15 @@ highlight LineNr ctermbg=NONE guibg=NONE
 highlight Folded ctermbg=NONE guibg=NONE
 highlight EndOfBuffer ctermbg=NONE guibg=NONE
 
+" nvim-treesitter.configs require must be positioned after plug#end()
 lua <<EOF
 require'nvim-treesitter.configs'.setup {
+  ensure_installed = {"c", "lua", "vim", "vimdoc", "terraform" },
+  auto_sync = false,
+  auto_install = true,
   highlight = {
     enable = true,
-    disable = {},
   },
 }
 EOF
+

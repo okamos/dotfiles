@@ -1,0 +1,23 @@
+[font]
+size = 22.0
+
+[font.bold]
+family = "UDEV Gothic 35NFLG"
+
+[font.glyph_offset]
+x = 0
+y = 0
+
+[font.italic]
+family = "UDEV Gothic 35NFLG"
+
+[font.normal]
+family = "UDEV Gothic 35NFLG"
+
+[font.offset]
+x = 0
+y = 0
+
+[window]
+dynamic_title = true
+opacity = 0.8
