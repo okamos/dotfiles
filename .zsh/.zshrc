@@ -94,10 +94,18 @@ export PATH=$PATH:$XDG_CONFIG_HOME/composer/vendor/bin
 ghidra_dir=$(ls -dt ~/Downloads/ghidra*/bin 2>/dev/null | head -1)
 [ -n "$ghidra_dir" ] && export PATH=$PATH:$ghidra_dir
 
-fpath=($(brew --prefix)/share/zsh/site-functions $fpath)
-autoload -Uz add-zsh-hock
+fpath=(/opt/homebrew/share/zsh/site-functions $fpath)
+autoload -Uz add-zsh-hook
 autoload -Uz chpwd_recent_dirs cdr add-zsh-hook
 autoload -Uz zmv
+
+# compinit: 24時間以内はキャッシュ利用
+autoload -Uz compinit
+if [[ -n ${ZDOTDIR}/.zcompdump(#qN.mh+24) ]]; then
+  compinit
+else
+  compinit -C
+fi
 
 # extra function
 function google() {
@@ -114,8 +122,8 @@ function google() {
 }
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-eval "$(/opt/homebrew/bin/brew shellenv)"
-eval "$(mise activate zsh)"
+# brew shellenv は .zprofile で実行済み
+eval "$(mise activate zsh --shims)"
 
 export PATH="$PATH:$HOME/.local/bin"
 
